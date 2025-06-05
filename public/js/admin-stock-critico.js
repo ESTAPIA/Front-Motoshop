@@ -1,4 +1,13 @@
 $(function() {
+  // Eliminar el bloque main.flex-grow-1 y su contenido del DOM
+  const mainElement = $('main.flex-grow-1');
+  if (mainElement.length) {
+    // Mover cualquier contenido útil que pudiera estar dentro
+    mainElement.contents().unwrap();
+    // Eliminar el div.content también
+    $('div.content').contents().unwrap();
+  }
+
   // Verificar autenticación de administrador
   const token = localStorage.getItem('token');
   const role = localStorage.getItem('role');
@@ -17,6 +26,9 @@ $(function() {
   loadNavbar();
   loadProductsWithCriticalStock();
   
+  // Inicializar efectos de partículas (misma animación que orders)
+  initBackgroundEffects();
+  
   // Event listeners
   $('#refresh-btn').on('click', loadProductsWithCriticalStock);
   
@@ -25,13 +37,59 @@ $(function() {
     $('#navbar-container').load('/partials/navbar-admin');
   }
   
+  // Inicializar efectos de fondo
+  function initBackgroundEffects() {
+    // Crear partículas (puntos flotantes)
+    const particles = document.querySelector('.particles');
+    if (particles) {
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Posición aleatoria
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        
+        // Tamaño aleatorio
+        const size = Math.random() * 5 + 1;
+        
+        // Estilo de la partícula
+        particle.style.cssText = `
+          position: absolute;
+          top: ${posY}%;
+          left: ${posX}%;
+          width: ${size}px;
+          height: ${size}px;
+          background: rgba(255, 255, 255, 0.5);
+          border-radius: 50%;
+          animation: float ${Math.random() * 10 + 10}s linear infinite;
+        `;
+        
+        particles.appendChild(particle);
+      }
+    }
+    
+    // Efecto de relámpagos (opcional)
+    const lightning = document.querySelector('.lightning-effect');
+    if (lightning) {
+      setInterval(() => {
+        if (Math.random() > 0.97) {
+          lightning.style.opacity = Math.random() * 0.2;
+          setTimeout(() => {
+            lightning.style.opacity = 0;
+          }, 200);
+        }
+      }, 500);
+    }
+  }
+  
   function loadProductsWithCriticalStock() {
     $('#loading-products').show();
     $('#products-container').hide();
     $('#no-products-message').hide();
     
     $.ajax({
-      url: `${window.API_BASE_URL || 'https://backmotos.onrender.com/api'}/estadisticas/productos/stock-critico`,
+      url: `${window.API_BASE_URL || 'http://localhost:9090/api'}/estadisticas/productos/stock-critico`,
       type: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`
