@@ -1,0 +1,435 @@
+/* Footer Styles - Paleta Verde y Crema */
+.footer {
+  background: linear-gradient(135deg, var(--primary-cream, #FFF8E1) 0%, var(--accent-cream, #FFFDF5) 100%) !important;
+  border-top: 3px solid var(--primary-green, #2E7D32);
+  margin-top: auto;
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+  z-index: 10;
+  box-shadow: 0 -4px 15px rgba(46, 125, 50, 0.1);
+  padding: 2rem 0;
+}
+
+/* Asegura que el footer permanezca en la parte inferior */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Altura mínima de toda la ventana */
+}
+
+main {
+  flex: 1 0 auto; /* El contenido principal ocupa todo el espacio disponible */
+}
+
+/* Títulos del footer */
+.footer-title {
+  color: var(--primary-green, #2E7D32);
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-green, #2E7D32), var(--secondary-green, #388E3C));
+  border-radius: 3px;
+}
+
+.footer-subtitle {
+  color: var(--secondary-green, #388E3C);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Texto del footer */
+.footer-text {
+  color: var(--dark-green, #1a2e1a);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* Enlaces del footer - Simplificado a solo Inicio y Catálogo */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Destacar enlaces principales */
+.footer-links li.main-link {
+  margin-bottom: 1rem;
+}
+
+.footer-links li.main-link .footer-link {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--secondary-green, #388E3C);
+}
+
+.footer-links li.main-link .footer-link:hover {
+  color: var(--primary-green, #2E7D32);
+}
+
+.footer-link {
+  color: var(--primary-green, #2E7D32);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  padding-left: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-link:hover {
+  color: var(--hover-green, #1B5E20);
+  text-decoration: none;
+}
+
+.footer-link::before {
+  content: '\2192'; /* Flecha hacia la derecha */
+  position: absolute;
+  left: -20px;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: var(--primary-green, #2E7D32);
+}
+
+.footer-link:hover::before {
+  opacity: 1;
+  left: -15px;
+}
+
+/* Redes sociales */
+.social-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.1) 0%, rgba(56, 142, 60, 0.2) 100%);
+  color: var(--primary-green, #2E7D32);
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.social-link:hover {
+  background: linear-gradient(135deg, var(--primary-green, #2E7D32) 0%, var(--secondary-green, #388E3C) 100%);
+  color: var(--primary-cream, #FFF8E1);
+  border-color: var(--light-green, #C8E6C9);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+}
+
+.social-link:hover::before {
+  left: 100%;
+}
+
+/* Información de contacto - Actualizada con datos específicos */
+.footer-contact {
+  font-size: 0.95rem;
+}
+
+.contact-item {
+  color: var(--dark-green, #1a2e1a);
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact-item.highlighted {
+  font-weight: 600;
+  color: var(--primary-green, #2E7D32);
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.05) 0%, rgba(56, 142, 60, 0.1) 100%);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.contact-item.highlighted i {
+  color: var(--secondary-green, #388E3C);
+}
+
+.contact-item:hover {
+  transform: translateX(5px);
+  color: var(--primary-green, #2E7D32);
+}
+
+.contact-item i {
+  color: var(--primary-green, #2E7D32);
+  font-size: 1.1rem;
+  width: 25px;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover i {
+  color: var(--secondary-green, #388E3C);
+  transform: scale(1.1);
+}
+
+/* Estilos para mostrar horario destacado */
+.hours-badge {
+  background: linear-gradient(135deg, var(--primary-green, #2E7D32) 0%, var(--secondary-green, #388E3C) 100%);
+  color: white;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 5px;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  box-shadow: 0 2px 5px rgba(46, 125, 50, 0.2);
+}
+
+/* Espacio para la dirección más larga */
+.contact-address {
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Mejora para los datos de contacto principales */
+.contact-phone, .contact-email {
+  font-weight: 600;
+}
+
+/* Línea divisoria */
+.footer-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.3), transparent);
+  margin: 2rem 0 1.5rem 0;
+}
+
+/* Derechos de autor */
+.footer-copyright {
+  color: var(--medium-gray, #757575);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.footer-copyright:hover {
+  color: var(--primary-green, #2E7D32);
+}
+
+.footer-legal {
+  font-size: 0.9rem;
+}
+
+.footer-legal .footer-link {
+  font-size: 0.9rem;
+  color: var(--medium-gray, #757575);
+  margin-left: 15px;
+}
+
+.footer-legal .footer-link:hover {
+  color: var(--primary-green, #2E7D32);
+}
+
+/* Título de integrante y separador */
+.contact-title {
+  font-weight: 600;
+  color: var(--secondary-green, #388E3C);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-separator {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.2), transparent);
+  margin: 0.75rem 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer .container {
+    padding: 2rem 1rem;
+  }
+  
+  .footer-title {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  .footer-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-subtitle {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  .footer-text {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  .footer-contact {
+    text-align: center;
+  }
+  
+  .contact-item {
+    justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .footer-legal {
+    text-align: center !important;
+    margin-top: 1rem;
+  }
+  
+  .footer-legal .footer-link {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+  
+  .contact-title {
+    justify-content: center;
+  }
+}
+
+/* Animación suave para elementos del footer */
+.footer .col-md-4,
+.footer .col-md-2 {
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.footer .col-md-4:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.footer .col-md-2:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.footer .col-md-4:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto hover para toda la sección del footer */
+.footer .col-md-4,
+.footer .col-md-2 {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.footer .col-md-4:hover,
+.footer .col-md-2:hover {
+  transform: translateY(-3px);
+}
+
+/* Efectos adicionales similares a los de la navbar */
+.footer-newsletter {
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.05) 0%, rgba(56, 142, 60, 0.1) 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 2px solid rgba(46, 125, 50, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.footer-newsletter:hover {
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.1) 0%, rgba(56, 142, 60, 0.15) 100%);
+  border-color: rgba(46, 125, 50, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.newsletter-input {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--primary-green, #2E7D32);
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: var(--dark-green, #1a2e1a);
+}
+
+.newsletter-button {
+  background: linear-gradient(135deg, var(--primary-green, #2E7D32) 0%, var(--secondary-green, #388E3C) 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.newsletter-button:hover {
+  background: linear-gradient(135deg, var(--secondary-green, #388E3C) 0%, var(--hover-green, #2E7D32) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+}
+
+.newsletter-button:hover::before {
+  left: 100%;
+}

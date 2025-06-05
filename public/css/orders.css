@@ -1,0 +1,136 @@
+/* Estilos para la página de órdenes */
+.order-card {
+  transition: all 0.2s ease;
+  border-left-width: 5px;
+  border-left-style: solid;
+}
+
+/* Colores de borde izquierdo según estado */
+.order-card[data-status="Pendiente"] {
+  border-left-color: #ffc107;
+}
+
+.order-card[data-status="Confirmado"],
+.order-card[data-status="Pagado"] {
+  border-left-color: #28a745;
+}
+
+.order-card[data-status="Cancelado"] {
+  border-left-color: #dc3545;
+}
+
+.order-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+/* Estilos mejorados para las opciones de cuentas bancarias */
+.bank-account-option {
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.bank-account-option:not(.account-insufficient-funds):hover {
+  background-color: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+.bank-account-option.active {
+  border-left-color: #0d6efd;
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.bank-account-option.active .selectable-indicator .bi {
+  opacity: 1 !important;
+  color: #0d6efd;
+}
+
+/* Estilo para cuentas con fondos insuficientes */
+.account-insufficient-funds {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f8f8f8;
+}
+
+.account-insufficient-funds:hover {
+  background-color: #f8f8f8; /* Evitar hover effect */
+}
+
+/* Mejorar la visualización del selector */
+.selectable-indicator {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+
+/* Animación de carga */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+#loading-orders, #payment-loading {
+  animation: pulse 1.5s infinite;
+}
+
+/* Fondo animado verde para pedidos - Copiado de catalog.css */
+.orders-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a2e1a 0%, #2d5a2d 50%, #0f2e0f 100%);
+  z-index: -1;
+  overflow: hidden;
+}
+
+.orders-background .particles,
+.orders-background .lightning-effect {
+  opacity: 0.5;
+}
+
+/* Clases para textos con color crema sobre fondo verde */
+.text-cream {
+  color: #FFF8E1 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+}
+
+/* Estilos para el botón "Seguir comprando" */
+.btn-outline-light {
+  border-color: var(--primary-cream, #FFF8E1) !important;
+  color: var(--primary-cream, #FFF8E1) !important;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background: var(--primary-cream, #FFF8E1) !important;
+  border-color: var(--primary-cream, #FFF8E1) !important;
+  color: var(--primary-green, #2E7D32) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 248, 225, 0.3);
+}
+
+/* Asegurar que el contenido sea visible sobre el fondo */
+.container {
+  position: relative;
+
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .order-card .card-body .row {
+    flex-direction: column;
+  }
+  
+  .order-card .card-body .col-md-4 {
+    text-align: left;
+    margin-top: 1rem;
+  }
+}

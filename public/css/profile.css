@@ -1,0 +1,946 @@
+/* ========================================
+   ITERACIÓN 4C: PERFIL DE USUARIO MODERNO VERDE + CREMA
+   Aplicando nueva paleta con efectos premium
+   ======================================== */
+
+.profile-header {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%);
+  border: 2px solid var(--primary-green);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.profile-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.15);
+}
+
+.form-control-plaintext {
+  padding: 12px 0;
+  margin-bottom: 0;
+  color: var(--dark-green);
+  background-color: transparent;
+  border: solid transparent;
+  border-width: 1px 0;
+  border-bottom: 2px solid var(--border-gray);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.form-control-plaintext:hover {
+  border-bottom-color: var(--primary-green);
+  color: var(--primary-green);
+}
+
+.form-control-plaintext:empty::after {
+  content: "No especificado";
+  color: var(--medium-gray);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--secondary-cream) 100%);
+  border-top: 4px solid var(--primary-green);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.08);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+}
+
+.card-header {
+  padding: 20px 25px;
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: white;
+  border-bottom: none;
+}
+
+.card-header h4, .card-header h5 {
+  color: white !important;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+/* Formularios modernizados */
+.form-control {
+  border-radius: 8px;
+  border: 2px solid var(--border-gray);
+  background-color: var(--accent-cream);
+  transition: all 0.3s ease;
+  padding: 12px 15px;
+}
+
+.form-control:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.15);
+  background-color: white;
+}
+
+.form-label {
+  color: var(--dark-green);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  border: none;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--hover-green) 0%, var(--primary-green) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--success-color) 100%);
+  border: none;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, var(--success-color) 0%, var(--secondary-green) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--secondary-cream) 0%, var(--primary-cream) 100%);
+  border: 2px solid var(--border-gray);
+  color: var(--dark-green);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--light-green) 100%);
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+  transform: translateY(-1px);
+}
+
+/* Estilo específico para el botón de editar información - usando los mismos estilos que .btn1 */
+.btn-edit-profile {
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Efecto hover para el botón de editar */
+.btn-edit-profile:hover {
+  background-color: var(--primary-green);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Alertas modernizadas */
+.alert {
+  border-radius: 12px;
+  border: none;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.alert-info {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-cream) 100%);
+  color: var(--dark-green);
+  border-left: 4px solid var(--primary-green);
+}
+
+.alert-warning {
+  background: linear-gradient(135deg, #FFF3CD 0%, #FCF4A3 100%);
+  color: #856404;
+  border-left: 4px solid var(--warning-color);
+}
+
+.alert-success {
+  background: linear-gradient(135deg, var(--light-green) 0%, #E8F5E8 100%);
+  color: var(--dark-green);
+  border-left: 4px solid var(--secondary-green);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ========================================
+   PERFIL MODERNO - MEJORAS PROFESIONALES
+   Header, estadísticas y formulario modernizado
+   ======================================== */
+
+/* Header del Perfil Modernizado */
+.profile-modern-header {
+    background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%);
+    border: 2px solid var(--primary-green);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-modern-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.05), transparent);
+    animation: shimmerProfile 4s ease-in-out infinite;
+}
+
+@keyframes shimmerProfile {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.profile-avatar-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.profile-avatar {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5rem;
+    box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+    animation: avatarPulse 3s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.avatar-status-indicator {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background: var(--success-color);
+    border: 3px solid white;
+    border-radius: 50%;
+    animation: statusBlink 2s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.profile-header-info h1.profile-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin: 0 0 0.25rem 0;
+    text-shadow: 0 2px 4px rgba(46, 125, 50, 0.1);
+}
+
+.profile-subtitle {
+    color: var(--medium-gray);
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Indicador de Completitud */
+.profile-completion-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 0.75rem 1rem;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.completion-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--dark-green);
+    white-space: nowrap;
+}
+
+.completion-bar {
+    width: 120px;
+    height: 8px;
+    background: rgba(46, 125, 50, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.completion-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+    border-radius: 10px;
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.completion-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: progressShimmer 2s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.completion-percentage {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    white-space: nowrap;
+}
+
+/* Botón de Edición Rápida */
+.btn-modern-edit {
+    background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-modern-edit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-modern-edit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    color: white;
+}
+
+.btn-modern-edit:hover::before {
+    left: 100%;
+}
+
+/* Tarjeta Principal Modernizada */
+.card.shadow-premium {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-cream) 0%, var(--secondary-cream) 100%);
+    box-shadow: 0 8px 30px rgba(46, 125, 50, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.card-header-modern {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    color: white;
+    padding: 1.5rem 2rem;
+    border: none;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h2 {
+    margin: 0;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estadísticas del Usuario */
+.user-stats-section {
+    padding: 0 1rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+    border-color: var(--primary-green);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+    font-weight: 500;
+}
+
+/* Sección de Información Personal */
+.profile-info-section {
+    padding: 0 1rem;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-green);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-field {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-green);
+}
+
+.info-field:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.1);
+}
+
+.field-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.field-value {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--dark-green);
+    min-height: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.field-value:empty::after {
+    content: "No especificado";
+    color: var(--medium-gray);
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Tarjetas de Acceso Rápido Modernizadas */
+.quick-access-section {
+    border-top: 2px solid var(--border-gray);
+    padding: 0 1rem;
+}
+
+.quick-access-card {
+    background: white;
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.quick-access-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff9800, #ffc107, #ffeb3b);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.quick-access-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-green);
+}
+
+.quick-access-card:hover::before {
+    transform: scaleX(1);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: white;
+    position: relative;
+}
+
+.orders-icon {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+}
+
+.catalog-icon {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+}
+
+.cart-icon {
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-content h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark-green);
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    color: var(--medium-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.card-stats {
+    margin-bottom: 1rem;
+}
+
+.stats-badge {
+    background: var(--light-green);
+    color: var(--primary-green);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.card-action {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    background: rgba(46, 125, 50, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.card-action:hover {
+    background: var(--primary-green);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Formulario de Edición Modernizado */
+.edit-form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.edit-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+}
+
+.edit-subtitle {
+    color: var(--medium-gray);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.modern-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.modern-form-group {
+    position: relative;
+}
+
+.modern-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.modern-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--border-gray);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--light-gray);
+}
+
+.modern-input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    background: white;
+}
+
+.modern-input:disabled {
+    background: var(--light-gray);
+    color: var(--medium-gray);
+    cursor: not-allowed;
+}
+
+.form-help {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.validation-feedback {
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.validation-feedback.invalid {
+    color: var(--error-color);
+    display: block;
+}
+
+.validation-feedback.valid {
+    color: var(--success-color);
+    display: block;
+}
+
+/* Botones del Formulario */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--border-gray);
+}
+
+.btn-modern-secondary {
+    background: var(--light-gray);
+    border: 2px solid var(--border-gray);
+    color: var(--medium-gray);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-modern-secondary:hover {
+    background: var(--border-gray);
+    color: var(--dark-gray);
+    transform: translateY(-2px);
+}
+
+.btn-modern-primary {
+    background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-modern-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-modern-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-modern-primary:hover::before {
+    left: 100%;
+}
+
+.btn-modern-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Estilos para integrar el fondo animado del home */
+.profile-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a2e1a 0%, #2d5a2d 50%, #0f2e0f 100%);
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Ajustar opacidad para mejorar legibilidad */
+.profile-background .particles,
+.profile-background .lightning-effect {
+  opacity: 0.5; /* Reducir opacidad para que no interfiera con el contenido */
+}
+
+/* Asegurar que las tarjetas y contenido del perfil sean legibles */
+.card {
+  background-color: rgba(255, 255, 255, 0.95) !important; /* Fondo semi-transparente */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque detrás de las tarjetas */
+  border: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.profile-modern-header {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Hacer que las alertas sean más visibles sobre el fondo */
+.alert {
+  backdrop-filter: blur(5px);
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Añadir espaciado adecuado antes del footer */
+.spacer-before-footer {
+  height: 20px; /* Altura mínima para el espaciador */
+  clear: both;
+}
+
+/* Aumentar espaciado general entre contenido y footer */
+main.flex-grow-1 {
+  padding-bottom: 40px; /* Añadir espaciado inferior al contenido principal */
+}
+
+/* Para asegurar que el footer no se superponga con el contenido en pantallas pequeñas */
+@media (max-width: 768px) {
+  main.flex-grow-1 {
+    padding-bottom: 60px; /* Mayor espaciado en móviles */
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-header {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+    .profile-modern-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .profile-avatar-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .completion-bar {
+        width: 100px;
+    }
+    
+    .modern-form {
+        padding: 1.5rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-modern-secondary,
+    .btn-modern-primary {
+        justify-content: center;
+    }
+}
+
+/* Efecto de resaltado para campos actualizados */
+@keyframes fieldUpdated {
+  0% { background-color: transparent; }
+  30% { background-color: rgba(76, 175, 80, 0.2); }
+  100% { background-color: transparent; }
+}
+
+.field-updated {
+  animation: fieldUpdated 2s ease;
+  border-left: 4px solid var(--primary-green) !important;
+  transition: all 0.3s ease;
+}
+
+/* Mejorar transición entre vista y edición */
+#profile-container, #edit-profile-container {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Estilos específicos para el botón "Editar información" en la alerta de perfil completo */
+#edit-complete-profile-link.btn-sm.btn-success {
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#edit-complete-profile-link.btn-sm.btn-success:hover {
+  background-color: var(--hover-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+

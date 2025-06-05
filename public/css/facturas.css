@@ -1,0 +1,64 @@
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header h5 {
+  margin-bottom: 0;
+}
+
+/* Estilos específicos para la factura */
+#invoice-printable {
+  font-family: 'Arial', sans-serif;
+}
+
+#invoice-printable .table th, 
+#invoice-printable .table td {
+  padding: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Estilos para los detalles de la factura */
+#invoice-detail-modal .card-header {
+  background-color: #f8f9fa;
+  font-weight: 500;
+}
+
+/* Estilos para la firma */
+.signature-image {
+  border-bottom: 1px solid #ced4da;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+/* Estilos para la impresión */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  #invoice-printable, #invoice-printable * {
+    visibility: visible;
+  }
+  
+  #invoice-printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  
+  .modal-footer, .btn, button {
+    display: none !important;
+  }
+}
+
+/* Estilos para los botones de acción */
+.card-footer .btn {
+  margin-left: 5px;
+}

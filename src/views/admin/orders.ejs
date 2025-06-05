@@ -1,0 +1,165 @@
+<%- include('../layouts/main') %>
+
+<!-- CSS específico para la gestión de pedidos -->
+<link rel="stylesheet" href="/css/admin.css">
+
+<!-- Contenedor dinámico de la Navbar -->
+<div id="navbar-container"></div>
+
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <h1 class="mb-0">Gestión de Pedidos</h1>
+      <p class="text-muted">Administre todos los pedidos de clientes</p>
+    </div>
+    <div class="col-md-4 text-end">
+      <button id="refresh-btn" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-clockwise"></i> Actualizar
+      </button>
+    </div>
+  </div>
+
+  <!-- Filtros de pedidos -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <label for="order-status" class="form-label">Filtrar por estado:</label>
+          <select id="order-status" class="form-select">
+            <option value="">Todos los estados</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Confirmado">Confirmado</option>
+            <option value="Cancelado">Cancelado</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spinner de carga -->
+  <div id="loading-orders" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+    <p class="mt-3">Cargando pedidos...</p>
+  </div>
+
+  <!-- Contenedor de la tabla de pedidos -->
+  <div id="orders-table-container" class="card" style="display: none;">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Fecha</th>
+              <th>Cliente</th>
+              <th>Estado</th>
+              <th>Método de Pago</th>
+              <th>Total</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="orders-table-body">
+            <!-- Los pedidos se cargarán aquí dinámicamente -->
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Paginación -->
+      <nav aria-label="Paginación de pedidos">
+        <ul id="pagination" class="pagination justify-content-center">
+          <!-- La paginación se generará dinámicamente -->
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Mensaje cuando no hay pedidos -->
+  <div id="no-orders-message" class="alert alert-info text-center" style="display: none;">
+    <i class="bi bi-inbox-fill fs-1 d-block mb-3"></i>
+    <h4>No hay pedidos disponibles</h4>
+    <p>No se encontraron pedidos con los criterios seleccionados.</p>
+  </div>
+
+  <!-- Modal para detalles del pedido -->
+  <div class="modal fade" id="order-detail-modal" tabindex="-1" aria-labelledby="orderDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="orderDetailModalLabel">Detalles del Pedido</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Spinner de carga para los detalles -->
+          <div id="order-detail-loading" class="text-center py-4">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Cargando...</span>
+            </div>
+            <p class="mt-3">Cargando detalles...</p>
+          </div>
+          
+          <!-- Contenido de los detalles -->
+          <div id="order-detail-content" style="display: none;">
+            <!-- Se cargará dinámicamente -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para cambiar estado -->
+  <div class="modal fade" id="change-status-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="change-status-modal-title">Editar Pedido</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="order-id">
+          <input type="hidden" id="current-status">
+          
+          <div class="mb-3">
+            <label class="form-label">Estado actual:</label>
+            <div class="form-control bg-light" id="current-status-display"></div>
+          </div>
+          
+          <!-- Sección para actualizar dirección (solo visible para pedidos pendientes) -->
+          <div id="address-update-container" class="mb-3 d-none">
+            <label class="form-label">Dirección actual:</label>
+            <div class="form-control bg-light mb-2" id="current-address"></div>
+            
+            <label for="new-address" class="form-label">Nueva dirección (opcional):</label>
+            <input type="text" id="new-address" class="form-control" placeholder="Ingrese nueva dirección de entrega">
+            <div class="form-text">Deje en blanco para mantener la dirección actual.</div>
+          </div>
+          
+          <!-- Sección para cambiar estado (solo visible para pedidos pendientes) -->
+          <div id="status-selector-container" class="mb-3">
+            <label for="new-status" class="form-label">Estado:</label>
+            <select id="new-status" class="form-select">
+              <!-- Las opciones se cargarán dinámicamente según el estado actual -->
+            </select>
+          </div>
+          
+          <!-- Mensaje informativo sobre las reglas de cambio de estado -->
+          <div id="status-info" class="alert alert-info d-none"></div>
+          
+          <!-- Mensaje de error -->
+          <div id="status-error" class="text-danger mt-2" style="display: none;"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="confirm-status-change">Confirmar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts específicos para esta página -->
+<script src="/js/admin-orders.js"></script>

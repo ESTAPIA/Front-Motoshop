@@ -1,0 +1,117 @@
+<%- include('../layouts/main') %>
+
+<!-- CSS específico para el dashboard -->
+<link rel="stylesheet" href="/css/admin.css">
+
+<!-- Contenedor dinámico de la Navbar -->
+<div id="navbar-container"></div>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Panel de Administración</h1>
+  
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="card bg-primary text-white">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-people me-2"></i>Usuarios</h5>
+          <p class="card-text display-4" id="users-count">0</p>
+          <a href="/admin/users" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-success text-white">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-box-seam me-2"></i>Productos</h5>
+          <p class="card-text display-4" id="products-count">0</p>
+          <a href="/admin/products" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-warning text-dark">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-bag me-2"></i>Pedidos</h5>
+          <p class="card-text display-4" id="orders-count">0</p>
+          <a href="/admin/orders" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-info text-white">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-receipt me-2"></i>Facturas</h5>
+          <p class="card-text display-4" id="invoices-count">0</p>
+          <a href="/facturas" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Últimos Pedidos</h5>
+        </div>
+        <div class="card-body">
+          <!-- Spinner de carga -->
+          <div id="loading-recent-orders" class="text-center py-4">
+            <div class="spinner-border spinner-border-sm text-primary" role="status">
+              <span class="visually-hidden">Cargando...</span>
+            </div>
+            <p class="mt-2 small">Cargando pedidos recientes...</p>
+          </div>
+          
+          <!-- Lista de pedidos recientes -->
+          <div id="recent-orders" style="display: none;">
+            <ul class="list-group list-group-flush" id="recent-orders-list">
+              <!-- Los pedidos se cargarán dinámicamente aquí -->
+            </ul>
+          </div>
+          
+          <div id="no-recent-orders" class="text-center py-3" style="display: none;">
+            <p class="text-muted mb-0">No hay pedidos recientes.</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="/admin/orders" class="btn btn-sm btn-outline-primary">Ver todos los pedidos</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Usuarios Nuevos</h5>
+        </div>
+        <div class="card-body">
+          <!-- Spinner de carga -->
+          <div id="loading-recent-users" class="text-center py-4">
+            <div class="spinner-border spinner-border-sm text-primary" role="status">
+              <span class="visually-hidden">Cargando...</span>
+            </div>
+            <p class="mt-2 small">Cargando usuarios recientes...</p>
+          </div>
+          
+          <!-- Lista de usuarios recientes -->
+          <div id="recent-users" style="display: none;">
+            <ul class="list-group list-group-flush" id="recent-users-list">
+              <!-- Los usuarios se cargarán dinámicamente aquí -->
+            </ul>
+          </div>
+          
+          <div id="no-recent-users" class="text-center py-3" style="display: none;">
+            <p class="text-muted mb-0">No hay usuarios recientes.</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="/admin/users" class="btn btn-sm btn-outline-primary">Ver todos los usuarios</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript específico para el dashboard -->
+<script src="/js/admin-dashboard.js"></script>

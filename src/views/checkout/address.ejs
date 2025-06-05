@@ -1,0 +1,68 @@
+<%- include('../layouts/main') %>
+
+<!-- CSS específico para checkout -->
+<link rel="stylesheet" href="/css/checkout.css">
+
+<!-- Contenedor dinámico de la Navbar -->
+<div id="navbar-container"></div>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <!-- Pasos de checkout -->
+      <div class="checkout-steps mb-4">
+        <div class="step active">
+          <div class="step-icon">1</div>
+          <div class="step-text">Dirección</div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-icon">2</div>
+          <div class="step-text">Pago</div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-icon">3</div>
+          <div class="step-text">Confirmación</div>
+        </div>
+      </div>
+      
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Información de Envío</h4>
+        </div>
+        <div class="card-body">
+          <!-- Spinner de carga -->
+          <div id="loading-checkout" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Cargando...</span>
+            </div>
+            <p class="mt-2">Verificando información...</p>
+          </div>
+          
+          <!-- Formulario de dirección -->
+          <form id="address-form" style="display: none;">
+            <div class="mb-3">
+              <label for="shipping-address" class="form-label">Dirección de Entrega</label>
+              <textarea class="form-control" id="shipping-address" rows="3" required 
+                placeholder="Ingrese su dirección completa de entrega"></textarea>
+              <div class="form-text">Por favor ingrese una dirección completa incluyendo ciudad.</div>
+            </div>
+            
+            <div class="d-grid gap-2 mt-4">
+              <button type="submit" class="btn btn-primary">Continuar</button>
+              <a href="/cart" class="btn btn-outline-secondary">Regresar al Carrito</a>
+            </div>
+          </form>
+          
+          <!-- Mensaje de Error -->
+          <div id="error-message" class="alert alert-danger mt-3" style="display: none;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript específico para el paso de dirección -->
+<script src="/js/checkout-address.js"></script>

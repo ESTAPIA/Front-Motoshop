@@ -1,0 +1,166 @@
+<%- include('../layouts/main') %>
+
+<!-- CSS específico para detalle de factura (puedes crearlo si es necesario) -->
+<!-- <link rel="stylesheet" href="/css/factura-detail.css"> -->
+
+<!-- Contenedor dinámico de la Navbar -->
+<div id="navbar-container"></div>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 id="factura-title"><%- title %></h2>
+        <a href="/facturas" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Volver a la lista
+        </a>
+    </div>
+
+    <!-- Indicador de carga -->
+    <div id="loading-factura-detail" class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+        <p class="mt-3">Cargando detalle de la factura...</p>
+    </div>
+
+    <!-- Contenedor para el detalle de la factura -->
+    <div id="factura-detail-content" style="display: none;">
+        <!-- El detalle de la factura se cargará aquí por JavaScript -->
+    </div>
+
+    <!-- Mensaje de error si la factura no se encuentra o no se puede cargar -->
+    <div id="factura-detail-error" class="alert alert-danger text-center" style="display: none;">
+        <!-- Mensaje se establecerá por JavaScript -->
+    </div>
+</div>
+
+<!-- Incluir un script para cargar los detalles de la factura -->
+<script>
+$(function() {
+    const token = localStorage.getItem('token');
+    const idPedido = '<%= typeof idPedido !== "undefined" ? idPedido : null %>'; // Obtener idPedido desde EJS
+    const apiBaseUrl = '<%= typeof apiBaseUrl !== "undefined" ? apiBaseUrl : "" %>';
+
+    function loadNavbar() {
+        const role = localStorage.getItem('role');
+        const partial = role === 'ROLE_ADMIN' ? 'navbar-admin' : 'navbar-user';
+        if ($('#navbar-container').length) {
+            $('#navbar-container').load(`/partials/${partial}`);
+        }
+    }
+
+    loadNavbar();
+
+    if (!token) {
+        window.location.href = '/auth/login?redirect=' + window.location.pathname;
+        return;
+    }
+
+    if (!idPedido || idPedido === 'null') {
+        $('#loading-factura-detail').hide();
+        $('#factura-detail-error').text('No se especificó un ID de pedido para cargar la factura.').show();
+        return;
+    }
+
+    const urlFactura = `${apiBaseUrl}/facturas/pedido/${idPedido}`;
+    $('#loading-factura-detail').show();
+
+    $.ajax({
+        url: urlFactura,
+        type: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        success: function(factura) {
+            $('#loading-factura-detail').hide();
+            renderFacturaDetail(factura);
+            $('#factura-detail-content').show();
+            // Actualizar título si es necesario, ej: con el ID de la factura real
+            if(factura.idFactura) {
+                $('#factura-title').text(`Detalle de Factura #${factura.idFactura} (Pedido #${factura.idPedido})`);
+            }
+        },
+        error: function(xhr) {
+            $('#loading-factura-detail').hide();
+            let errorMsg = 'Error al cargar la factura.';
+            if (xhr.status === 404) {
+                errorMsg = 'La factura para el pedido especificado no fue encontrada.';
+            } else if (xhr.responseJSON && xhr.responseJSON.error) {
+                errorMsg = xhr.responseJSON.error;
+            } else if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMsg = xhr.responseJSON.message;
+            }
+            $('#factura-detail-error').text(errorMsg).show();
+            if (xhr.status === 401) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('role');
+                window.location.href = '/auth/login?redirect=' + window.location.pathname;
+            }
+        }
+    });
+
+    function renderFacturaDetail(factura) {
+        const $content = $('#factura-detail-content');
+        let detallesHtml = '<p>No hay detalles disponibles para esta factura.</p>';
+
+        if (factura.detalles && factura.detalles.length > 0) {
+            detallesHtml = `
+                <table class="table table-sm table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${factura.detalles.map(detalle => `
+                            <tr>
+                                <td>${detalle.producto ? detalle.producto.prodNombre : 'N/A'}</td>
+                                <td>${detalle.cantidad}</td>
+                                <td>$${parseFloat(detalle.precioUnitario).toFixed(2)}</td>
+                                <td>$${parseFloat(detalle.subtotal).toFixed(2)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        const facturaHtml = `
+            <div class="card">
+                <div class="card-header">
+                    Factura ID: <strong>${factura.idFactura}</strong> (Pedido ID: ${factura.idPedido})
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h5 class="card-title">Cliente: ${factura.nombreCliente}</h5>
+                            <p class="card-text mb-1"><strong>Cédula/RUC:</strong> ${factura.cedula}</p>
+                            <p class="card-text mb-1"><strong>Dirección:</strong> ${factura.direccionCliente}</p>
+                            <p class="card-text"><strong>Email:</strong> ${factura.emailCliente || 'No especificado'}</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <p class="card-text mb-1"><strong>Fecha de Emisión:</strong> ${new Date(factura.fechaEmision).toLocaleDateString()}</p>
+                            <h4>Total: <span class="text-danger">$${parseFloat(factura.total).toFixed(2)}</span></h4>
+                        </div>
+                    </div>
+                    
+                    <h6>Detalles de la Factura:</h6>
+                    ${detallesHtml}
+                </div>
+                <div class="card-footer text-muted">
+                    Gracias por su compra.
+                </div>
+            </div>
+        `;
+        $content.html(facturaHtml);
+    }
+
+    // Función para mostrar toasts (si la necesitas aquí también)
+    function showToast(type, message) {
+        console.log(`Toast (${type}): ${message}`);
+        alert(`${type.toUpperCase()}: ${message}`); 
+    }
+});
+</script>
