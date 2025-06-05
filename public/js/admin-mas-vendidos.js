@@ -99,7 +99,7 @@ $(function() {
     $('#no-products-message').hide();
     
     $.ajax({
-      url: `${window.API_BASE_URL || 'http://localhost:9090/api'}/estadisticas/productos/mas-vendidos?limit=${limit}`,
+      url: `${window.API_BASE_URL || 'https://backmotos.onrender.com/api'}/estadisticas/productos/mas-vendidos?limit=${limit}`,
       type: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`
