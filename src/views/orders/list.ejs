@@ -2,166 +2,180 @@
 
 <!-- CSS específico para órdenes -->
 <link rel="stylesheet" href="/css/orders.css">
+<!-- Agregar CSS de home para los efectos de fondo -->
+<link rel="stylesheet" href="/css/home.css">
 
 <!-- Contenedor dinámico de la Navbar -->
 <div id="navbar-container"></div>
 
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-12">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Mis Pedidos</h1>
-        <a href="/catalog" class="btn btn-outline-success">
-          <i class="bi bi-shop me-2"></i>Seguir comprando
-        </a>
-      </div>
-      
-      <!-- Filtros - Actualizados para usar los valores correctos según la API -->
-      <div class="card mb-4">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="order-status" class="form-label">Estado del pedido</label>
-                <select id="order-status" class="form-select">
-                  <option value="">Todos</option>
-                  <option value="Pendiente">Pendientes</option>
-                  <option value="Confirmado">Confirmados</option>
-                  <option value="Cancelado">Cancelados</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Indicador de carga -->
-      <div id="loading-orders" class="text-center py-5">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Cargando...</span>
-        </div>
-        <p class="mt-3">Cargando sus pedidos...</p>
-      </div>
-      
-      <!-- Lista de pedidos -->
-      <div id="orders-container" style="display: none;">
-        <!-- Los pedidos se cargarán dinámicamente aquí -->
-      </div>
-      
-      <!-- Mensaje cuando no hay pedidos -->
-      <div id="no-orders-message" class="alert alert-info text-center" style="display: none;">
-        <i class="bi bi-inbox fs-1 d-block mb-3"></i>
-        <h4>No tienes pedidos</h4>
-        <p>No se encontraron pedidos con los filtros seleccionados.</p>
-        <a href="/catalog" class="btn btn-primary mt-2">Explorar productos</a>
-      </div>
-      
-      <!-- Paginación -->
-      <nav aria-label="Paginación de pedidos">
-        <ul class="pagination justify-content-center mt-4" id="pagination">
-          <!-- La paginación se generará dinámicamente -->
-        </ul>
-      </nav>
-    </div>
+<!-- Contenido principal envuelto en main -->
+<main class="flex-grow-1">
+  <!-- Agregar el fondo animado verde -->
+  <div class="orders-background">
+    <div class="particles"></div>
+    <div class="lightning-effect"></div>
   </div>
-</div>
-
-<!-- Modal para completar pago - Ahora con opciones para cancelar y actualizar dirección -->
-<div class="modal fade" id="complete-payment-modal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title"><i class="bi bi-credit-card me-2"></i>Completar pago pendiente</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div id="payment-loading" class="text-center py-4">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Cargando...</span>
-          </div>
-          <p class="mt-2">Cargando opciones de pago...</p>
+  
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h1 class="mb-4 text-cream">Mis Pedidos</h1>
+          <a href="/catalog" class="btn btn-outline-light">
+            <i class="bi bi-shop me-2"></i>Seguir comprando
+          </a>
         </div>
         
-        <div id="accounts-container" style="display: none;">
-          <input type="hidden" id="pending-order-id">
-          
-          <!-- Datos del pedido -->
-          <div class="card mb-3">
-            <div class="card-header bg-light">
-              <h6 class="mb-0">Información del pedido</h6>
-            </div>
-            <div class="card-body">
-              <div class="row mb-2">
-                <div class="col-md-4 fw-bold">Total a pagar:</div>
-                <div class="col-md-8"><strong id="order-amount" class="text-primary">$0.00</strong></div>
-              </div>
-              <div class="row mb-2">
-                <div class="col-md-4 fw-bold">Dirección de entrega:</div>
-                <div class="col-md-8" id="current-address">No especificada</div>
-              </div>
-              
-              <!-- Opción para actualizar dirección (colapsable) -->
-              <div class="mt-3">
-                <a class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" href="#collapseUpdateAddress" role="button" aria-expanded="false">
-                  <i class="bi bi-pencil me-1"></i>Actualizar dirección
-                </a>
-                
-                <div class="collapse mt-3" id="collapseUpdateAddress">
-                  <div class="card card-body">
-                    <form id="update-address-form">
-                      <div class="mb-3">
-                        <label for="update-address-input" class="form-label">Nueva dirección de entrega</label>
-                        <input type="text" class="form-control" id="update-address-input" required>
-                        <div class="invalid-feedback" id="address-update-error"></div>
-                      </div>
-                      <button type="submit" id="update-address-btn" class="btn btn-primary btn-sm">Actualizar dirección</button>
-                    </form>
-                  </div>
+        <!-- Filtros - Actualizados para usar los valores correctos según la API -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="order-status" class="form-label">Estado del pedido</label>
+                  <select id="order-status" class="form-select">
+                    <option value="">Todos</option>
+                    <option value="Pendiente">Pendientes</option>
+                    <option value="Confirmado">Confirmados</option>
+                    <option value="Cancelado">Cancelados</option>
+                  </select>
                 </div>
               </div>
             </div>
           </div>
-          
-          <h5>Seleccione una cuenta para el pago</h5>
-          <p class="text-muted small">Haga clic en una cuenta con fondos suficientes para seleccionarla</p>
-          
-          <!-- Información adicional sobre el proceso de pago -->
-          <div class="alert alert-info mb-3">
-            <i class="bi bi-info-circle-fill me-2"></i>
-            <small>Al confirmar el pago, se realizará una transacción desde la cuenta seleccionada. El pedido cambiará a estado "Confirmado" y se descontará el monto de su cuenta bancaria.</small>
+        </div>
+        
+        <!-- Indicador de carga -->
+        <div id="loading-orders" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+          <p class="mt-3">Cargando sus pedidos...</p>
+        </div>
+        
+        <!-- Lista de pedidos -->
+        <div id="orders-container" style="display: none;">
+          <!-- Los pedidos se cargarán dinámicamente aquí -->
+        </div>
+        
+        <!-- Mensaje cuando no hay pedidos -->
+        <div id="no-orders-message" class="alert alert-info text-center" style="display: none;">
+          <i class="bi bi-inbox fs-1 d-block mb-3"></i>
+          <h4>No tienes pedidos</h4>
+          <p>No se encontraron pedidos con los filtros seleccionados.</p>
+          <a href="/catalog" class="btn btn-primary mt-2">Explorar productos</a>
+        </div>
+        
+        <!-- Paginación -->
+        <nav aria-label="Paginación de pedidos">
+          <ul class="pagination justify-content-center mt-4" id="pagination">
+            <!-- La paginación se generará dinámicamente -->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para completar pago - Ahora con opciones para cancelar y actualizar dirección -->
+  <div class="modal fade" id="complete-payment-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title"><i class="bi bi-credit-card me-2"></i>Completar pago pendiente</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="payment-loading" class="text-center py-4">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Cargando...</span>
+            </div>
+            <p class="mt-2">Cargando opciones de pago...</p>
           </div>
           
-          <div id="bank-accounts-list" class="list-group mb-3">
-            <!-- Las cuentas bancarias se cargarán aquí -->
-          </div>
-          <div class="alert alert-warning" id="no-accounts-message" style="display: none;">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>
-            No se encontraron cuentas bancarias disponibles.
+          <div id="accounts-container" style="display: none;">
+            <input type="hidden" id="pending-order-id">
+            
+            <!-- Datos del pedido -->
+            <div class="card mb-3">
+              <div class="card-header bg-light">
+                <h6 class="mb-0">Información del pedido</h6>
+              </div>
+              <div class="card-body">
+                <div class="row mb-2">
+                  <div class="col-md-4 fw-bold">Total a pagar:</div>
+                  <div class="col-md-8"><strong id="order-amount" class="text-primary">$0.00</strong></div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-md-4 fw-bold">Dirección de entrega:</div>
+                  <div class="col-md-8" id="current-address">No especificada</div>
+                </div>
+                
+                <!-- Opción para actualizar dirección (colapsable) -->
+                <div class="mt-3">
+                  <a class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" href="#collapseUpdateAddress" role="button" aria-expanded="false">
+                    <i class="bi bi-pencil me-1"></i>Actualizar dirección
+                  </a>
+                  
+                  <div class="collapse mt-3" id="collapseUpdateAddress">
+                    <div class="card card-body">
+                      <form id="update-address-form">
+                        <div class="mb-3">
+                          <label for="update-address-input" class="form-label">Nueva dirección de entrega</label>
+                          <input type="text" class="form-control" id="update-address-input" required>
+                          <div class="invalid-feedback" id="address-update-error"></div>
+                        </div>
+                        <button type="submit" id="update-address-btn" class="btn btn-primary btn-sm">Actualizar dirección</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <h5>Seleccione una cuenta para el pago</h5>
+            <p class="text-muted small">Haga clic en una cuenta con fondos suficientes para seleccionarla</p>
+            
+            <!-- Información adicional sobre el proceso de pago -->
+            <div class="alert alert-info mb-3">
+              <i class="bi bi-info-circle-fill me-2"></i>
+              <small>Al confirmar el pago, se realizará una transacción desde la cuenta seleccionada. El pedido cambiará a estado "Confirmado" y se descontará el monto de su cuenta bancaria.</small>
+            </div>
+            
+            <div id="bank-accounts-list" class="list-group mb-3">
+              <!-- Las cuentas bancarias se cargarán aquí -->
+            </div>
+            <div class="alert alert-warning" id="no-accounts-message" style="display: none;">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              No se encontraron cuentas bancarias disponibles.
+            </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <!-- Botón para cancelar pedido -->
-        <button type="button" class="btn btn-danger" id="cancel-order-btn">
-          <i class="bi bi-x-circle me-1"></i>Cancelar pedido
-        </button>
-        <div>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-success" id="confirm-complete-payment" disabled>
-            <i class="bi bi-check2-circle me-1"></i>Confirmar pago
+        <div class="modal-footer justify-content-between">
+          <!-- Botón para cancelar pedido -->
+          <button type="button" class="btn btn-danger" id="cancel-order-btn">
+            <i class="bi bi-x-circle me-1"></i>Cancelar pedido
           </button>
+          <div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-success" id="confirm-complete-payment" disabled>
+              <i class="bi bi-check2-circle me-1"></i>Confirmar pago
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Contenedor para toasts -->
-<div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast-container"></div>
+  <!-- Contenedor para toasts -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast-container"></div>
 
-<!-- JavaScript específico para órdenes -->
-<script>
-  // Asegurarnos de que el API_BASE_URL está disponible
-  window.API_BASE_URL = window.API_BASE_URL || 'https://backmotos.onrender.com/api';
-</script>
-<script src="/js/orders.js"></script>
+  <!-- JavaScript específico para órdenes -->
+  <script>
+    // Asegurarnos de que el API_BASE_URL está disponible
+    window.API_BASE_URL = window.API_BASE_URL || 'http://localhost:9090/api';
+  </script>
+  <script src="/js/orders.js"></script>
+</main>
+
+<!-- Footer -->
+<%- include('../partials/footer') %>
