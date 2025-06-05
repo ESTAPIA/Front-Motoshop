@@ -312,9 +312,6 @@ $(function() {
       }
       
       html += `
-                <a href="/orders/${order.idPedido}" class="btn btn-outline-secondary ms-2">
-                  <i class="bi bi-eye me-1"></i>Ver detalles
-                </a>
               </div>
             </div>
           </div>
