@@ -1,6 +1,6 @@
 $(function() {
   // Definir la URL base de la API
-  const API_BASE_URL = window.API_BASE_URL || 'https://backmotos.onrender.com/api';
+  const API_BASE_URL = window.API_BASE_URL || 'http://localhost:9090/api';
   
   // Verificar autenticación (opcional para catálogo)
   const token = localStorage.getItem('token');
@@ -74,19 +74,31 @@ $(function() {
     }
     
     const productId = $(this).data('id');
-    const productName = $(this).closest('.product-card').find('.card-title').text();
-    const productPrice = $(this).closest('.product-card').find('.product-price').text();
-    const productImage = $(this).closest('.product-card').find('.product-image').attr('src');
+    // Obtener la cantidad directamente del contador en la tarjeta
+    const quantity = parseInt($(this).closest('.card-footer').find('.qty-input').val()) || 1;
     
-    // Configurar los datos en el modal con los IDs CORREGIDOS
-    $('#product-id').val(productId);
-    $('#quantity-product-name').text(productName);
-    $('#quantity-product-price').text(productPrice);
-    $('#quantity-product-image').attr('src', productImage || '/img/no-image.png');
-    $('#product-quantity').val(1); // Resetear cantidad a 1
+    // Añadir al carrito directamente con la cantidad seleccionada
+    addToCart(productId, quantity);
+  });
+  
+  // Añadir event listeners para los botones de incrementar/decrementar cantidad
+  $(document).on('click', '.increase-qty', function() {
+    const $input = $(this).closest('.quantity-control').find('.qty-input');
+    const currentValue = parseInt($input.val()) || 1;
+    const max = parseInt($input.attr('max')) || 99;
     
-    // Mostrar el modal
-    $('#quantity-modal').modal('show');
+    if (currentValue < max) {
+      $input.val(currentValue + 1);
+    }
+  });
+  
+  $(document).on('click', '.decrease-qty', function() {
+    const $input = $(this).closest('.quantity-control').find('.qty-input');
+    const currentValue = parseInt($input.val()) || 2;
+    
+    if (currentValue > 1) {
+      $input.val(currentValue - 1);
+    }
   });
   
   // Event delegation para elementos dinámicos - Añadir evento para "Ver detalles"
@@ -300,25 +312,12 @@ $(function() {
     });
   }
   
-  // Añadir event listener para el botón "Añadir al carrito" dentro del modal
+  // Modificar la función para usar directamente el modal de detalle si es necesario
   $(document).on('click', '#modal-add-to-cart', function() {
     const productId = $(this).data('id');
-    
-    // Mostrar el modal de cantidad con los IDs CORREGIDOS
-    $('#product-id').val(productId);
-    $('#product-quantity').val(1); // Resetear cantidad a 1
+    // Añadir directamente al carrito con cantidad 1 desde el modal de detalle
+    addToCart(productId, 1);
     $('#product-detail-modal').modal('hide');
-    
-    // Opcional: Podemos recuperar los datos para mostrarlos en el modal de cantidad
-    const productName = $('#modal-product-name').text();
-    const productPrice = $('#modal-product-price').text();
-    const productImage = $('#modal-product-images .carousel-item.active img').attr('src');
-    
-    $('#quantity-product-name').text(productName);
-    $('#quantity-product-price').text(productPrice);
-    $('#quantity-product-image').attr('src', productImage || '/img/no-image.png');
-    
-    $('#quantity-modal').modal('show');
   });
   
   function renderProducts(products) {
@@ -381,11 +380,24 @@ $(function() {
                 </span>
               </div>
             </div>
-            <div class="card-footer d-flex justify-content-between">
-              <a href="#" class="btn btn-success btn-sm view-details" data-id="${id}">
-                <i class="bi bi-eye"></i> Ver detalles
-              </a>
-              <button class="btn btn-primary btn-sm add-to-cart" data-id="${id}" ${stock <= 0 ? 'disabled' : ''}>
+            <div class="card-footer">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <a href="#" class="btn btn-success btn-sm view-details" data-id="${id}">
+                  <i class="bi bi-eye"></i> Ver detalles
+                </a>
+                <div class="quantity-control" data-product-id="${id}">
+                  <div class="input-group input-group-sm">
+                    <button class="btn btn-outline-secondary btn-sm decrease-qty" type="button" ${stock <= 0 ? 'disabled' : ''}>
+                      <i class="bi bi-dash"></i>
+                    </button>
+                    <input type="number" class="form-control form-control-sm text-center qty-input" value="1" min="1" max="${stock}" ${stock <= 0 ? 'disabled' : ''} style="width: 45px;" readonly>
+                    <button class="btn btn-outline-secondary btn-sm increase-qty" type="button" ${stock <= 0 ? 'disabled' : ''}>
+                      <i class="bi bi-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-sm w-100 add-to-cart" data-id="${id}" ${stock <= 0 ? 'disabled' : ''}>
                 <i class="bi bi-cart-plus"></i> Añadir al carrito
               </button>
             </div>
