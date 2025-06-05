@@ -89,7 +89,7 @@ $(function() {
     $('#no-products-message').hide();
     
     $.ajax({
-      url: `${window.API_BASE_URL || 'http://localhost:9090/api'}/estadisticas/productos/stock-critico`,
+      url: `${window.API_BASE_URL || 'https://backmotos.onrender.com/api'}/estadisticas/productos/stock-critico`,
       type: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`
