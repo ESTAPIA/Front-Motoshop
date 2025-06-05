@@ -1,11 +1,10 @@
-
 /* ========================================
    ITERACIÓN 4D: FORMULARIOS DE ADMIN MODERNOS VERDE + CREMA
    Aplicando nueva paleta con efectos premium
    ======================================== */
 
-/* Cards del dashboard modernizados */
-.card {
+/* Cards del dashboard modernizados - EXCLUIR CARTAS DE ESTADÍSTICAS */
+.card:not(.dashboard-stats-card) {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow: 0 4px 15px rgba(46, 125, 50, 0.08);
   border: none;
@@ -15,11 +14,12 @@
   overflow: hidden;
 }
 
-.card:hover {
+.card:not(.dashboard-stats-card):hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
 }
 
+/* Encabezados de las cartas del dashboard */
 .card-header {
   background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
   color: white;
@@ -33,6 +33,7 @@
   margin-bottom: 0;
 }
 
+/* Cuerpo de las cartas del dashboard */
 .card-body {
   padding: 25px;
 }
@@ -310,19 +311,8 @@
   border-left: 4px solid var(--error-color);
 }
 
-/* Animaciones */
-@keyframes fadeInUp {
-  from { 
-    opacity: 0; 
-    transform: translateY(30px) scale(0.95); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0) scale(1); 
-  }
-}
-
-.card {
+/* Animaciones - EXCLUIR CARTAS DE ESTADÍSTICAS */
+.card:not(.dashboard-stats-card) {
   animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -376,4 +366,62 @@
     width: 80px;
     height: 80px;
   }
+}
+
+/* ESTILOS SIMPLES Y LIMPIOS PARA CARTAS DE ESTADÍSTICAS DEL DASHBOARD */
+.dashboard-stats-card {
+  border-radius: 15px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
+.dashboard-stats-card:hover {
+  transform: translateY(-5px) scale(1.02) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dashboard-stats-card .card-body {
+  padding: 25px !important;
+}
+
+.dashboard-stats-card .card-title {
+  font-weight: 600 !important;
+  margin-bottom: 15px !important;
+}
+
+.dashboard-stats-card .card-text {
+  font-weight: 700 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Asegurar colores correctos para cada carta */
+.dashboard-stats-card.bg-primary {
+  background: #0d6efd !important;
+}
+
+.dashboard-stats-card.bg-success {
+  background: #198754 !important;
+}
+
+.dashboard-stats-card.bg-warning {
+  background: #ffc107 !important;
+}
+
+.dashboard-stats-card.bg-info {
+  background: #0dcaf0 !important;
+}
+
+/* Texto visible según el fondo */
+.dashboard-stats-card.text-white .card-title,
+.dashboard-stats-card.text-white .card-text,
+.dashboard-stats-card.text-white i {
+  color: white !important;
+}
+
+.dashboard-stats-card.text-dark .card-title,
+.dashboard-stats-card.text-dark .card-text,
+.dashboard-stats-card.text-dark i {
+  color: #212529 !important;
 }
