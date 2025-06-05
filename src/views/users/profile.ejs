@@ -1,0 +1,352 @@
+<%- include('../layouts/main') %>
+
+<!-- CSS específico para el perfil -->
+<link rel="stylesheet" href="/css/profile.css">
+<!-- Agregar CSS de home para los efectos de fondo -->
+<link rel="stylesheet" href="/css/home.css">
+
+<!-- Contenedor dinámico de la Navbar -->
+<div id="navbar-container"></div>
+
+<!-- Contenido principal envuelto en main -->
+<main class="flex-grow-1">
+  <!-- Agregar el fondo animado -->
+  <div class="profile-background">
+    <div class="particles"></div>
+    <div class="lightning-effect"></div>
+  </div>
+  
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <!-- Header del Perfil Modernizado -->
+        <div class="profile-modern-header mb-4">
+          <div class="profile-avatar-section">
+            <div class="profile-avatar">
+              <i class="bi bi-person-circle"></i>
+              <div class="avatar-status-indicator"></div>
+            </div>
+            <div class="profile-header-info">
+              <h1 class="profile-name" id="header-profile-name">Cargando...</h1>
+              <p class="profile-subtitle" id="header-profile-subtitle">Usuario del sistema</p>
+              <div class="profile-completion-indicator">
+                <span class="completion-text">Completitud del perfil:</span>
+                <div class="completion-bar">
+                  <div class="completion-progress" id="completion-progress"></div>
+                </div>
+                <span class="completion-percentage" id="completion-percentage">0%</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-quick-actions">
+            <button class="btn btn-modern-edit" id="quick-edit-btn">
+              <i class="bi bi-pencil-fill"></i>
+              Editar Perfil
+            </button>
+          </div>
+        </div>
+
+        <div class="card shadow-premium">
+          <div class="card-header-modern">
+            <div class="header-content">
+              <h2 class="mb-0"><i class="bi bi-person-gear me-2"></i>Información Personal</h2>
+              <div class="header-badges" id="profile-badges">
+                <!-- Se llenarán dinámicamente -->
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="text-center mb-4" id="loading-profile">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando...</span>
+              </div>
+              <p class="mt-2">Cargando tu información...</p>
+            </div>
+              <div id="profile-container" style="display: none;">            <!-- Estadísticas del Usuario -->
+              <div class="user-stats-section mb-4">
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <div class="stat-card">
+                      <div class="stat-icon">
+                        <i class="bi bi-calendar-check"></i>
+                      </div>
+                      <div class="stat-content">
+                        <span class="stat-number" id="member-since">2024</span>
+                        <span class="stat-label">Miembro desde</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="stat-card">
+                      <div class="stat-icon">
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <div class="stat-content">
+                        <span class="stat-number" id="user-level">Básico</span>
+                        <span class="stat-label">Nivel</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="stat-card">
+                      <div class="stat-icon">
+                        <i class="bi bi-shield-check"></i>
+                      </div>
+                      <div class="stat-content">
+                        <span class="stat-number" id="account-status">Activo</span>
+                        <span class="stat-label">Estado</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Información Personal Mejorada -->
+              <div class="profile-info-section mb-4">
+                <h4 class="section-title">
+                  <i class="bi bi-person-vcard"></i> 
+                  Datos Personales
+                </h4>            
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="info-field">
+                    <label class="field-label">
+                      <i class="bi bi-card-text me-1"></i>
+                      Cédula de Identidad
+                    </label>
+                    <div class="field-value" id="profile-cedula"></div>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="info-field">
+                    <label class="field-label">
+                      <i class="bi bi-person me-1"></i>
+                      Nombre Completo
+                    </label>
+                    <div class="field-value" id="profile-nombre-completo"></div>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="info-field">
+                    <label class="field-label">
+                      <i class="bi bi-telephone me-1"></i>
+                      Teléfono de Contacto
+                    </label>
+                    <div class="field-value" id="profile-telefono"></div>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="info-field">
+                    <label class="field-label">
+                      <i class="bi bi-envelope me-1"></i>
+                      Correo Electrónico
+                    </label>
+                    <div class="field-value" id="profile-correo"></div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              
+              <!-- Alerta amarilla para perfil incompleto -->
+              <div class="alert alert-warning mt-3" id="profile-incomplete" style="display: none;">
+                <div class="d-flex align-items-center">
+                  <div class="flex-grow-1">
+                    <i class="bi bi-info-circle-fill me-2"></i>
+                    <strong>Información incompleta:</strong> Por favor complete su información de perfil para acceder a todas las funcionalidades.
+                  </div>
+                  <div>
+                    <a href="#" id="edit-profile-link" class="btn btn-sm btn-warning">
+                      <i class="bi bi-pencil-fill me-1"></i>Completar Ahora
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Tarjeta verde para perfil completo con opción de editar -->
+              <div class="alert alert-success mt-3" id="profile-complete" style="display: none;">
+                <div class="d-flex align-items-center">
+                  <div class="flex-grow-1">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    <strong>Perfil Completo</strong> - Su información está actualizada.
+                  </div>
+                  <div>
+                    <a href="#" id="edit-complete-profile-link" class="btn btn-sm btn-success">
+                      <i class="bi bi-pencil-fill me-1"></i>Editar Información
+                    </a>
+                  </div>
+                </div>
+              </div>
+                <!-- Acceso Rápido Mejorado -->
+              <div class="quick-access-section mt-4 pt-4">
+                <h4 class="section-title">
+                  <i class="bi bi-lightning"></i> 
+                  Acceso Rápido
+                </h4>
+                <div class="row g-4">                <div class="col-md-4">
+                    <div class="quick-access-card">
+                      <div class="card-icon orders-icon">
+                        <i class="bi bi-list-check"></i>
+                      </div>
+                      <div class="card-content">
+                        <h5>Mis Pedidos</h5>
+                        <p>Revisa el estado de tus compras y historial</p>
+                        <div class="card-stats">
+                          <span class="stats-badge">Ver historial</span>
+                        </div>
+                      </div>
+                      <a href="/orders" class="card-action">
+                        <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="quick-access-card">
+                      <div class="card-icon catalog-icon">
+                        <i class="bi bi-shop"></i>
+                      </div>
+                      <div class="card-content">
+                        <h5>Catálogo</h5>
+                        <p>Explora nuestros productos y ofertas</p>
+                        <div class="card-stats">
+                          <span class="stats-badge">+500 productos</span>
+                        </div>
+                      </div>
+                      <a href="/catalog" class="card-action">
+                        <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="quick-access-card">
+                      <div class="card-icon cart-icon">
+                        <i class="bi bi-cart"></i>
+                      </div>
+                      <div class="card-content">
+                        <h5>Mi Carrito</h5>
+                        <p>Revisa y finaliza tus compras pendientes</p>
+                        <div class="card-stats">
+                          <span class="stats-badge" id="cart-count">0 productos</span>
+                        </div>
+                      </div>
+                      <a href="/cart" class="card-action">
+                        <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!-- Formulario de edición modernizado -->
+            <div id="edit-profile-container" style="display: none;">
+              <div class="edit-form-header mb-4">
+                <h4 class="edit-title">
+                  <i class="bi bi-pencil-square"></i> 
+                  Editar Información Personal
+                </h4>
+                <p class="edit-subtitle">Actualiza tus datos para mantener tu perfil al día</p>
+              </div>
+              
+              <form id="edit-profile-form" class="modern-form">
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <div class="modern-form-group">
+                      <label for="edit-cedula" class="modern-label">
+                        <i class="bi bi-card-text me-2"></i>
+                        Cédula de Identidad
+                      </label>
+                      <input type="text" class="modern-input" id="edit-cedula" disabled>
+                      <small class="form-help">La cédula no se puede modificar</small>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="modern-form-group">
+                      <label for="edit-nombre" class="modern-label">
+                        <i class="bi bi-person me-2"></i>
+                        Nombre *
+                      </label>
+                      <input type="text" class="modern-input" id="edit-nombre" required>
+                      <div class="validation-feedback"></div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="modern-form-group">
+                      <label for="edit-apellido" class="modern-label">
+                        <i class="bi bi-person-check me-2"></i>
+                        Apellido *
+                      </label>
+                      <input type="text" class="modern-input" id="edit-apellido" required>
+                      <div class="validation-feedback"></div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="modern-form-group">
+                      <label for="edit-telefono" class="modern-label">
+                        <i class="bi bi-telephone me-2"></i>
+                        Teléfono *
+                      </label>
+                      <input type="tel" class="modern-input" id="edit-telefono" required>
+                      <div class="validation-feedback"></div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="modern-form-group">
+                      <label for="edit-correo" class="modern-label">
+                        <i class="bi bi-envelope me-2"></i>
+                        Correo Electrónico *
+                      </label>
+                      <input type="email" class="modern-input" id="edit-correo" required>
+                      <div class="validation-feedback"></div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="modern-form-group">
+                      <label for="edit-password" class="modern-label">
+                        <i class="bi bi-shield-lock me-2"></i>
+                        Nueva Contraseña (opcional)
+                      </label>
+                      <input type="password" class="modern-input" id="edit-password" placeholder="Dejar vacío para mantener actual">
+                      <small class="form-help">Mínimo 6 caracteres si decides cambiarla</small>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-actions mt-4">
+                  <button type="button" class="btn-modern-secondary" id="btn-cancel-edit">
+                    <i class="bi bi-x-circle me-2"></i>
+                    Cancelar
+                  </button>
+                  <button type="submit" class="btn-modern-primary" id="btn-save-changes">
+                    <i class="bi bi-check-circle me-2"></i>
+                    <span class="btn-text">Guardar Cambios</span>
+                    <span class="btn-loading" style="display: none;">
+                      <span class="spinner-border spinner-border-sm me-2"></span>
+                      Guardando...
+                    </span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- El Modal de Éxito para Actualización de Perfil ha sido eliminado -->
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Agregar un espaciador al final del contenido principal -->
+    <div class="spacer-before-footer mb-5 pb-4"></div>
+  </div>
+</main>
+<!-- Footer -->
+<%- include('../partials/footer') %>
+<!-- JavaScript específico para el perfil -->
+<script src="/js/profile.js"></script>

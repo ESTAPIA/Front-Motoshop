@@ -1,0 +1,193 @@
+<%- include('../layouts/main') %>
+
+<!-- CSS específico para el carrito -->
+<link rel="stylesheet" href="/css/cart.css">
+
+<!-- Contenedor dinámico de la Navbar -->
+<div id="navbar-container"></div>
+
+<!-- Header mejorado del carrito -->
+<div class="cart-hero-section">
+  <div class="container">
+    <div class="cart-header">
+      <div class="cart-title-section">
+        <h1 class="cart-main-title">
+          <i class="bi bi-cart3 me-3"></i>Mi Carrito de Compras
+        </h1>
+        <p class="cart-subtitle">Revisa tus productos antes de proceder al pago</p>
+      </div>
+      <div class="cart-actions-header">
+        <a href="/catalog" class="btn btn-outline-success btn-continue-shopping">
+          <i class="bi bi-arrow-left me-2"></i>Seguir comprando
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contenido principal del carrito -->
+<div class="container cart-main-content">
+  <div class="row">
+    <!-- Columna principal: productos -->
+    <div class="col-lg-8">
+      <div class="cart-products-section">
+        <div class="cart-section-header">
+          <h3 class="section-title">Productos en tu carrito</h3>
+          <div class="cart-counter-badge" id="cart-items-count">
+            <i class="bi bi-box-seam me-1"></i>
+            <span>0 productos</span>
+          </div>
+        </div>
+        
+        <div id="cart-container" class="cart-items-container">
+          <!-- Loader mejorado -->
+          <div class="cart-loading-state">
+            <div class="loading-spinner">
+              <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Cargando...</span>
+              </div>
+            </div>
+            <p class="loading-text">Cargando tu carrito...</p>
+          </div>
+        </div>
+      </div>
+    </div>    <!-- Columna lateral: resumen -->
+    <div class="col-lg-4">
+      <div class="cart-summary-sticky">
+        <div class="cart-summary-card">
+          <div class="summary-header">
+            <h4 class="summary-title">
+              <i class="bi bi-receipt me-2"></i>Resumen de compra
+            </h4>
+          </div>
+          
+          <div class="summary-body">
+            <div class="summary-row subtotal-row">
+              <span>Subtotal:</span>
+              <span id="cart-subtotal">$0.00</span>
+            </div>
+            <div class="summary-row shipping-row">
+              <span>Envío:</span>
+              <span class="text-success">Gratis</span>
+            </div>
+            <hr class="summary-divider">
+            <div class="summary-row total-row">
+              <span class="total-label">Total:</span>
+              <span id="cart-total" class="total-amount">$0.00</span>
+            </div>
+          </div>
+          
+          <div class="summary-footer">
+            <button id="checkout-btn" class="btn btn-success btn-checkout" disabled>
+              <i class="bi bi-credit-card me-2"></i>
+              Proceder al pago
+            </button>
+            <button id="empty-cart-btn" class="btn btn-outline-danger btn-empty-cart mt-2" style="display: none;">
+              <i class="bi bi-trash me-2"></i>
+              Vaciar carrito
+            </button>
+          </div>
+          
+          <!-- Información adicional -->
+          <div class="cart-security-info">
+            <div class="security-item">
+              <i class="bi bi-shield-check text-success me-2"></i>
+              <small>Compra 100% segura</small>
+            </div>
+            <div class="security-item">
+              <i class="bi bi-truck text-success me-2"></i>
+              <small>Envío gratis en tu pedido</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para confirmar eliminación de producto -->
+<div class="modal fade" id="remove-product-modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmar eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro de que deseas eliminar este producto del carrito?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" id="confirm-remove" class="btn btn-danger">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para confirmar vaciado del carrito -->
+<div class="modal fade" id="empty-cart-modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Vaciar carrito</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro de que deseas eliminar todos los productos del carrito?</p>
+        <p class="text-danger"><small><i class="bi bi-exclamation-triangle-fill me-1"></i> Esta acción no se puede deshacer.</small></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" id="confirm-empty-cart" class="btn btn-danger">Vaciar carrito</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para ingresar dirección de entrega -->
+<div class="modal fade" id="shipping-address-modal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title"><i class="bi bi-geo-alt me-2"></i>Dirección de entrega</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="shipping-address-form">
+        <div class="modal-body">
+          <div class="alert alert-info">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <small>Por favor ingresa la dirección donde deseas recibir tu pedido. Este paso es necesario para continuar con el proceso de pago.</small>
+          </div>
+          
+          <div class="mb-3">
+            <label for="shipping-address" class="form-label">Dirección completa:</label>
+            <textarea class="form-control" id="shipping-address" rows="3" required placeholder="Ej: Av. Principal #123, Colonia, Ciudad, CP"></textarea>
+            <div class="text-danger" id="address-error"></div>
+          </div>
+          
+          <!-- Agregar selector de método de pago -->
+          <div class="mb-3">
+            <label for="payment-method" class="form-label">Método de pago:</label>
+            <select class="form-select" id="payment-method" required>
+              <option value="Ahorros">Cuenta de Ahorros</option>
+              <option value="Corriente">Cuenta Corriente</option>
+            </select>
+            <small class="text-muted">Seleccione el tipo de cuenta que utilizará para el pago.</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-check2-circle me-1"></i>Continuar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Contenedor para toasts -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast-container"></div>
+
+<!-- JavaScript específico para el carrito -->
+<script src="/js/cart.js"></script>

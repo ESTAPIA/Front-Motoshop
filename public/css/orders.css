@@ -1,0 +1,90 @@
+/* Estilos para la página de órdenes */
+.order-card {
+  transition: all 0.2s ease;
+  border-left-width: 5px;
+  border-left-style: solid;
+}
+
+/* Colores de borde izquierdo según estado */
+.order-card[data-status="Pendiente"] {
+  border-left-color: #ffc107;
+}
+
+.order-card[data-status="Confirmado"],
+.order-card[data-status="Pagado"] {
+  border-left-color: #28a745;
+}
+
+.order-card[data-status="Cancelado"] {
+  border-left-color: #dc3545;
+}
+
+.order-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+/* Estilos mejorados para las opciones de cuentas bancarias */
+.bank-account-option {
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.bank-account-option:not(.account-insufficient-funds):hover {
+  background-color: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+.bank-account-option.active {
+  border-left-color: #0d6efd;
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.bank-account-option.active .selectable-indicator .bi {
+  opacity: 1 !important;
+  color: #0d6efd;
+}
+
+/* Estilo para cuentas con fondos insuficientes */
+.account-insufficient-funds {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f8f8f8;
+}
+
+.account-insufficient-funds:hover {
+  background-color: #f8f8f8; /* Evitar hover effect */
+}
+
+/* Mejorar la visualización del selector */
+.selectable-indicator {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+
+/* Animación de carga */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+#loading-orders, #payment-loading {
+  animation: pulse 1.5s infinite;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .order-card .card-body .row {
+    flex-direction: column;
+  }
+  
+  .order-card .card-body .col-md-4 {
+    text-align: left;
+    margin-top: 1rem;
+  }
+}

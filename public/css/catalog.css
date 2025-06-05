@@ -1,0 +1,658 @@
+/* Estilos para el catálogo de productos */
+
+/* ========================================
+   ITERACIÓN 3: TARJETAS MODERNAS VERDE + CREMA
+   Aplicando nueva paleta con efectos modernos
+   ======================================== */
+
+.product-card {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%);
+  border: 1px solid var(--border-gray);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, var(--light-green) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(46, 125, 50, 0.15), 
+              0 5px 15px rgba(46, 125, 50, 0.08);
+  border-color: var(--primary-green);
+}
+
+.product-card:hover::before {
+  opacity: 0.05;
+}
+
+/* Mejoras para el contenedor de imagen */
+.product-image-container {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, var(--secondary-cream) 0%, var(--primary-cream) 100%);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+}
+
+.product-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    rgba(46, 125, 50, 0.02) 0%, 
+    rgba(76, 175, 80, 0.03) 100%);
+  z-index: 0;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  z-index: 1;
+  filter: brightness(1.05) contrast(1.1);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.08) rotate(1deg);
+  filter: brightness(1.1) contrast(1.15) saturate(1.1);
+}
+
+/* Animación de carga moderna */
+.product-image-container.loading::after {
+  content: '';
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 50%;
+  left: 50%;
+  margin-top: -17.5px;
+  margin-left: -17.5px;
+  border: 3px solid var(--light-green);
+  border-top: 3px solid var(--primary-green);
+  border-radius: 50%;
+  animation: modernSpin 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  z-index: 2;
+}
+
+@keyframes modernSpin {
+  0% { 
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+    opacity: 0.8;
+  }
+  100% { 
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Footer moderno de la tarjeta */
+.card-footer {
+  background: linear-gradient(135deg, var(--accent-cream) 0%, var(--primary-cream) 100%);
+  border-top: 1px solid var(--primary-green);
+  border-radius: 0 0 12px 12px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Títulos y descripción mejorados */
+.card-title {
+  font-weight: 600;
+  height: 50px;
+  overflow: hidden;
+  color: var(--dark-green);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  line-height: 1.3;
+}
+
+.card-text.product-description {
+  height: 60px;
+  overflow: hidden;
+  color: var(--medium-gray);
+  line-height: 1.4;
+}
+
+/* Badges de stock modernos */
+.badge {
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.badge.bg-success {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%) !important;
+  color: white !important;
+}
+
+.badge.bg-warning {
+  background: linear-gradient(135deg, var(--warning-color) 0%, #FF7043 100%) !important;
+  color: white !important;
+}
+
+.badge.bg-danger {
+  background: linear-gradient(135deg, var(--error-color) 0%, #D32F2F 100%) !important;
+  color: white !important;
+}
+
+/* Botones modernos de agregar al carrito */
+.btn-success {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-success::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, var(--hover-green) 0%, var(--dark-green) 100%);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+}
+
+.btn-success:hover::before {
+  left: 100%;
+}
+
+.btn-success:active {
+  transform: translateY(0) scale(1);
+  transition: all 0.1s;
+}
+
+/* Paginación moderna con nueva paleta */
+.pagination .page-item.active .page-link {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  border-color: var(--primary-green);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(46, 125, 50, 0.3);
+}
+
+.pagination .page-link {
+  color: var(--primary-green);
+  border-color: var(--border-gray);
+  border-radius: 8px;
+  margin: 0 2px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.pagination .page-link:hover {
+  color: white;
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  border-color: var(--primary-green);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(46, 125, 50, 0.2);
+}
+
+/* Controles de filtro mejorados */
+#search-input.border-primary, #category-filter.border-primary {
+  border-width: 2px;
+  border-color: var(--primary-green) !important;
+  box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.15);
+}
+
+#search-input, #category-filter {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: var(--primary-cream);
+}
+
+#search-input:focus, #category-filter:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.15);
+  background-color: white;
+}
+
+/* Botón de Reset para filtros modernizado */
+.filter-reset {
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--medium-gray);
+  margin-left: 8px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.filter-reset:hover {
+  color: white;
+  background-color: var(--error-color);
+  transform: scale(1.1);
+}
+
+/* Badge para indicar filtro activo modernizado */
+.filter-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.6rem;
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Efectos adicionales para cards */
+.product-card .card-body {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+/* Precio destacado */
+.product-price {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--primary-green);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Animación para nuevos productos */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Estilos para integrar el fondo animado del home */
+.catalog-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a2e1a 0%, #2d5a2d 50%, #0f2e0f 100%);
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Ajustar opacidad para mejorar legibilidad */
+.catalog-background .particles,
+.catalog-background .lightning-effect {
+  opacity: 0.5; /* Reducir opacidad para que no interfiera con el contenido */
+}
+
+/* Clases para textos con color crema sobre fondo verde */
+.text-cream {
+  color: var(--primary-cream, #FFF8E1) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+}
+
+.text-cream-help {
+  color: var(--accent-cream, #FFFDF5) !important;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.catalog-title {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.catalog-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 80px;
+  height: 3px;
+  background: var(--primary-cream, #FFF8E1);
+  border-radius: 2px;
+}
+
+/* Estilos para el modal de selección de cantidad mejorado */
+#quantity-modal .modal-content {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+#quantity-modal .modal-header {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+}
+
+#quantity-modal .modal-body {
+  padding: 20px;
+}
+
+#quantity-modal .modal-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 15px 20px;
+}
+
+.selected-product-info {
+  background: linear-gradient(135deg, var(--light-green) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-gray);
+}
+
+.selected-product-image img {
+  border-radius: 8px;
+  border: 1px solid var(--border-gray);
+  transition: all 0.3s ease;
+}
+
+.selected-product-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.selected-product-details h6 {
+  color: var(--dark-green);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 5px;
+}
+
+#quantity-modal .input-group {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+#quantity-modal .input-group button {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-cream) 100%);
+  color: var(--primary-green);
+  border: 1px solid var(--primary-green);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#quantity-modal .input-group button:hover {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  color: white;
+  transform: scale(1.05);
+}
+
+#product-quantity {
+  border: 1px solid var(--primary-green);
+  font-weight: 600;
+  color: var(--primary-green);
+}
+
+#confirm-add-to-cart {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  border: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+#confirm-add-to-cart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+#confirm-add-to-cart:hover {
+  background: linear-gradient(135deg, var(--hover-green) 0%, var(--dark-green) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+}
+
+#confirm-add-to-cart:hover::before {
+  left: 100%;
+}
+
+/* Estilos para el modal de detalles del producto */
+#product-detail-modal .modal-content {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+#product-detail-modal .modal-header {
+  background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+  border: none;
+  padding: 15px 20px;
+}
+
+.modal-product-img {
+  height: 300px;
+  object-fit: contain;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.product-detail-title {
+  color: var(--primary-green);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-bottom: 2px solid var(--light-green);
+  padding-bottom: 10px;
+}
+
+.product-price-container {
+  background: linear-gradient(135deg, var(--light-green) 0%, rgba(255, 255, 255, 0.8) 100%);
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-price-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--dark-green);
+}
+
+.product-price-value {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary-green);
+}
+
+.product-details-table {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(46, 125, 50, 0.2);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--dark-green);
+}
+
+.detail-value {
+  font-weight: 500;
+  color: var(--primary-green);
+}
+
+.description-title {
+  font-weight: 600;
+  color: var(--primary-green);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.description-text {
+  line-height: 1.6;
+  color: var(--dark-green);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary-green);
+}
+
+#modal-product-carousel {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#modal-stock-badge {
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+#modal-add-to-cart {
+  background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+}
+
+#modal-add-to-cart:hover {
+  background: linear-gradient(135deg, var(--primary-green), var(--hover-green));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+}
+
+/* Controles del carrusel de imágenes en el modal de detalles - Color verde */
+#modal-product-carousel .carousel-control-prev-icon,
+#modal-product-carousel .carousel-control-next-icon {
+  background-color: var(--primary-green);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-size: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+#modal-product-carousel .carousel-control-prev-icon:hover,
+#modal-product-carousel .carousel-control-next-icon:hover {
+  background-color: var(--secondary-green);
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+#modal-product-carousel .carousel-control-prev,
+#modal-product-carousel .carousel-control-next {
+  opacity: 0.9;
+  width: 10%;
+}
+
+#modal-product-carousel .carousel-control-prev {
+  left: 10px;
+}
+
+#modal-product-carousel .carousel-control-next {
+  right: 10px;
+}
+
+/* Cuadro informativo sobre IVA */
+.iva-info-box {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--secondary-cream) 100%);
+  border: 1px solid var(--border-gray);
+  border-left: 4px solid var(--primary-green);
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 0.95rem;
+  color: var(--dark-green);
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.08);
+  display: flex;
+  align-items: center;
+}
+
+.iva-info-box i {
+  color: var(--primary-green);
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .iva-info-box {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+}

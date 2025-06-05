@@ -1,0 +1,293 @@
+/* ========================================
+   🎨 BANNER PROFESIONAL DE PERFIL INCOMPLETO
+   ======================================== */
+
+.professional-profile-banner {
+    background: linear-gradient(135deg, 
+        rgba(255, 152, 0, 0.05) 0%, 
+        rgba(255, 193, 7, 0.08) 50%, 
+        rgba(255, 152, 0, 0.05) 100%);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, #ff9800, #ffc107, #ffeb3b) 1;
+    box-shadow: 0 2px 20px rgba(255, 152, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: slideInFromTop 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.professional-profile-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 193, 7, 0.1), 
+        transparent);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.professional-profile-banner .banner-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #ff9800, #ffc107);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+    }
+}
+
+.professional-profile-banner .banner-icon::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255, 152, 0, 0.3);
+    border-radius: 50%;
+    animation: ripple 2s linear infinite;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+.professional-profile-banner .banner-icon i {
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.professional-profile-banner .banner-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.professional-profile-banner .banner-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #e65100;
+    margin: 0 0 0.25rem 0;
+    text-shadow: 0 1px 2px rgba(229, 81, 0, 0.1);
+}
+
+.professional-profile-banner .banner-subtitle {
+    font-size: 0.9rem;
+    color: #bf360c;
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.professional-profile-banner .banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.professional-profile-banner .btn-complete-profile {
+    background: linear-gradient(135deg, #4caf50, #66bb6a);
+    border: none;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 3px 12px rgba(76, 175, 80, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.professional-profile-banner .btn-complete-profile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: left 0.5s;
+}
+
+.professional-profile-banner .btn-complete-profile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    background: linear-gradient(135deg, #66bb6a, #4caf50);
+    color: white;
+    text-decoration: none;
+}
+
+.professional-profile-banner .btn-complete-profile:hover::before {
+    left: 100%;
+}
+
+.professional-profile-banner .btn-complete-profile:active {
+    transform: translateY(0);
+}
+
+.professional-profile-banner .btn-close {
+    background: rgba(233, 30, 99, 0.1);
+    border: 2px solid rgba(233, 30, 99, 0.2);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.professional-profile-banner .btn-close::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(233, 30, 99, 0.1);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.professional-profile-banner .btn-close:hover {
+    background: rgba(233, 30, 99, 0.15);
+    border-color: rgba(233, 30, 99, 0.4);
+    transform: scale(1.1);
+}
+
+.professional-profile-banner .btn-close:hover::before {
+    transform: scale(1);
+}
+
+.professional-profile-banner .progress-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4caf50, #66bb6a, #81c784);
+    width: 25%; /* Asumiendo que completar el perfil es 25% del total */
+    animation: progressPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes progressPulse {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* ========================================
+   📱 RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .professional-profile-banner .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .professional-profile-banner .banner-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .professional-profile-banner .banner-actions {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .professional-profile-banner .btn-complete-profile {
+        flex: 1;
+        justify-content: center;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .professional-profile-banner .banner-title {
+        font-size: 1rem;
+    }
+    
+    .professional-profile-banner .banner-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .professional-profile-banner .btn-complete-profile {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Animación de salida cuando se cierra el banner */
+.professional-profile-banner.dismissing {
+    animation: slideOutToTop 0.4s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+@keyframes slideOutToTop {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+        max-height: 100px;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+        max-height: 0;
+        padding: 0;
+        margin: 0;
+    }
+}

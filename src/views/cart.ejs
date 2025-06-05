@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Carrito de Compras</h1>
+
+  <!-- Contenedor para los elementos del carrito -->
+  <div id="cart-container">
+    <div class="text-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <p>Cargando tu carrito...</p>
+    </div>
+  </div>
+
+  <!-- Información del total -->
+  <div class="row mt-4 mb-5">
+    <div class="col-md-6 offset-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Resumen de compra</h5>
+          <div class="d-flex justify-content-between">
+            <span>Total:</span>
+            <span id="cart-total" class="fw-bold">$0.00</span>
+          </div>
+          <button id="checkout-btn" class="btn btn-success w-100 mt-3" disabled>
+            Proceder al pago
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para confirmar la eliminación de un producto -->
+<div class="modal fade" id="remove-item-modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmar eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro que deseas eliminar este producto del carrito?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" id="confirm-remove" class="btn btn-danger">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

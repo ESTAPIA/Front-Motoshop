@@ -1,0 +1,39 @@
+<%- include('../layouts/main') %>
+
+<!-- Contenedor dinámico de la Navbar -->
+<div id="navbar-container"></div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card shadow-sm">
+        <div class="card-body text-center py-5">
+          <div class="mb-4">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+          </div>
+          <h1 class="mb-3">¡Pedido Confirmado!</h1>
+          <p class="lead">Tu pedido ha sido procesado correctamente.</p>
+          <p>Recibirás un correo electrónico con los detalles de tu compra.</p>
+          
+          <div class="mt-4">
+            <a href="/catalog" class="btn btn-outline-primary me-2">
+              <i class="bi bi-shop me-1"></i> Seguir comprando
+            </a>
+            <a href="/profile" class="btn btn-success">
+              <i class="bi bi-list-check me-1"></i> Ver mis pedidos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    // Cargar la navbar adecuada
+    const role = localStorage.getItem('role');
+    const partial = role === 'ROLE_ADMIN' ? 'navbar-admin' : 'navbar-user';
+    $('#navbar-container').load(`/partials/${partial}`);
+  });
+</script>

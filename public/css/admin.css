@@ -1,0 +1,379 @@
+
+/* ========================================
+   ITERACIÓN 4D: FORMULARIOS DE ADMIN MODERNOS VERDE + CREMA
+   Aplicando nueva paleta con efectos premium
+   ======================================== */
+
+/* Cards del dashboard modernizados */
+.card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.08);
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%);
+  border-top: 4px solid var(--primary-green);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: white;
+  border-bottom: none;
+  padding: 20px 25px;
+}
+
+.card-header h5, .card-header h4 {
+  color: white !important;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.card-body {
+  padding: 25px;
+}
+
+/* Tablas modernizadas */
+.table {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--secondary-cream) 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.05);
+}
+
+.table th {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 15px;
+}
+
+.table td {
+  padding: 12px 15px;
+  border-color: var(--border-gray);
+  background-color: var(--accent-cream);
+}
+
+.table-hover tbody tr:hover {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--primary-cream) 100%);
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+
+/* Botones de acción modernizados */
+.btn-action {
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin: 0 2px;
+}
+
+.btn-action:hover {
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* Botones del panel admin */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--hover-green) 0%, var(--primary-green) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+}
+
+.btn-outline-info {
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+  background: transparent;
+}
+
+.btn-outline-info:hover {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  border-color: var(--primary-green);
+  color: white;
+}
+
+.btn-outline-danger {
+  color: var(--error-color);
+  border-color: var(--error-color);
+  background: transparent;
+}
+
+.btn-outline-danger:hover {
+  background: linear-gradient(135deg, var(--error-color) 0%, #D32F2F 100%);
+  border-color: var(--error-color);
+  color: white;
+}
+
+/* Badges de estado de pedidos modernizados */
+.badge-pendiente {
+  background: linear-gradient(135deg, var(--warning-color) 0%, #FF7043 100%);
+  color: white;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.badge-confirmado {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: white;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.badge-enviado {
+  background: linear-gradient(135deg, #0dcaf0 0%, #0EA5E9 100%);
+  color: white;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.badge-entregado {
+  background: linear-gradient(135deg, #0d6efd 0%, #6366f1 100%);
+  color: white;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.badge-cancelado {
+  background: linear-gradient(135deg, var(--error-color) 0%, #D32F2F 100%);
+  color: white;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+/* Imágenes en miniatura mejoradas */
+.product-thumbnail {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--border-gray);
+  transition: all 0.3s ease;
+}
+
+.product-thumbnail:hover {
+  border-color: var(--primary-green);
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+}
+
+/* Preview de imágenes modernizado */
+#images-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  background: linear-gradient(135deg, var(--accent-cream) 0%, var(--primary-cream) 100%);
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px dashed var(--primary-green);
+}
+
+#images-preview img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--border-gray);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#images-preview img:hover {
+  transform: scale(1.05) rotate(2deg);
+  border-color: var(--secondary-green);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+}
+
+/* Estilos para la gestión de productos */
+#image-preview {
+  min-height: 120px;
+  border: 2px dashed var(--primary-green);
+  padding: 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-cream) 100%);
+  transition: all 0.3s ease;
+}
+
+#image-preview:hover {
+  border-color: var(--secondary-green);
+  background: linear-gradient(135deg, var(--accent-cream) 0%, var(--primary-cream) 100%);
+}
+
+#image-preview img {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#image-preview img:hover {
+  transform: scale(1.08) rotate(1deg);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.25);
+}
+
+/* Formularios modernizados */
+.form-control {
+  border-radius: 8px;
+  border: 2px solid var(--border-gray);
+  background-color: var(--accent-cream);
+  transition: all 0.3s ease;
+  padding: 12px 15px;
+}
+
+.form-control:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.15);
+  background-color: white;
+}
+
+.form-select {
+  border-radius: 8px;
+  border: 2px solid var(--border-gray);
+  background-color: var(--accent-cream);
+  transition: all 0.3s ease;
+}
+
+.form-select:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.15);
+}
+
+.form-label {
+  color: var(--dark-green);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Modales modernizados */
+.modal-content {
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%);
+  box-shadow: 0 15px 35px rgba(46, 125, 50, 0.2);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  color: white;
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
+  padding: 20px 25px;
+}
+
+.modal-footer {
+  background: linear-gradient(135deg, var(--secondary-cream) 0%, var(--primary-cream) 100%);
+  border-top: 1px solid var(--border-gray);
+  border-radius: 0 0 15px 15px;
+  padding: 20px 25px;
+}
+
+/* Alertas modernizadas */
+.alert {
+  border-radius: 12px;
+  border: none;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.alert-info {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-cream) 100%);
+  color: var(--dark-green);
+  border-left: 4px solid var(--primary-green);
+}
+
+.alert-warning {
+  background: linear-gradient(135deg, #FFF3CD 0%, #FCF4A3 100%);
+  color: #856404;
+  border-left: 4px solid var(--warning-color);
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #F8D7DA 0%, #F5C2C7 100%);
+  color: #721c24;
+  border-left: 4px solid var(--error-color);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Estilos para impresión mejorados */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    padding: 20mm;
+    background: white !important;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .card {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #000 !important;
+  }
+  
+  .table th {
+    background: #f8f9fa !important;
+    color: #000 !important;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 20px;
+  }
+  
+  .btn-action {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 1px;
+  }
+  
+  .product-thumbnail {
+    width: 45px;
+    height: 45px;
+  }
+  
+  #images-preview img {
+    width: 80px;
+    height: 80px;
+  }
+}

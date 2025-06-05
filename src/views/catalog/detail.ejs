@@ -1,0 +1,92 @@
+<%- include('../layouts/main') %>
+
+<!-- CSS específico para el detalle de producto -->
+<link rel="stylesheet" href="/css/product-detail.css">
+<!-- Agregar CSS de home para los efectos de fondo -->
+<link rel="stylesheet" href="/css/home.css">
+
+<!-- Contenedor dinámico de la Navbar -->
+<div id="navbar-container"></div>
+
+<!-- Contenido principal envuelto en main -->
+<main class="flex-grow-1">
+  <!-- Agregar el fondo animado -->
+  <div class="detail-background">
+    <div class="particles"></div>
+    <div class="lightning-effect"></div>
+  </div>
+  
+  <div class="container mt-4">
+    <!-- Spinner de carga -->
+    <div id="loading-product" class="text-center my-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <p class="mt-2">Cargando detalles del producto...</p>
+    </div>
+    
+    <!-- Detalles del producto -->
+    <div id="product-detail" style="display: none;">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/catalog">Catálogo</a></li>
+          <li class="breadcrumb-item active" id="product-name-breadcrumb">Detalle del Producto</li>
+        </ol>
+      </nav>
+      
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div id="product-images" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="product-image-carousel">
+              <!-- Las imágenes se cargarán dinámicamente -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#product-images" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#product-images" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h1 id="product-name"></h1>
+          <p class="lead" id="product-description"></p>
+          <p class="fs-2 fw-bold text-primary">$<span id="product-price"></span></p>
+          <p><strong>Categoría:</strong> <span id="product-category"></span></p>
+          <p><strong>Stock disponible:</strong> <span id="product-stock"></span></p>
+          
+          <div class="d-flex align-items-center mt-4">
+            <div class="input-group me-3" style="width: 130px;">
+              <button class="btn btn-outline-secondary" type="button" id="decrease-quantity">-</button>
+              <input type="number" class="form-control text-center" id="product-quantity" value="1" min="1">
+              <button class="btn btn-outline-secondary" type="button" id="increase-quantity">+</button>
+            </div>
+            <button class="btn btn-primary" id="add-to-cart-btn">
+              <i class="bi bi-cart-plus"></i> Añadir al carrito
+            </button>
+          </div>
+          
+          <div class="alert alert-success mt-3" id="add-success" style="display: none;">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <span id="success-message"></span>
+            <div class="mt-2">
+              <a href="/catalog" class="btn btn-sm btn-outline-success me-2">Seguir comprando</a>
+              <a href="/cart" class="btn btn-sm btn-success">Ver carrito</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Agregar un espaciador al final del contenido principal -->
+    <div class="spacer-before-footer mb-5 pb-4"></div>
+  </div>
+</main>
+
+<!-- Footer -->
+<%- include('../partials/footer') %>
+
+<!-- JavaScript específico para el detalle del producto -->
+<script src="/js/product-detail.js"></script>

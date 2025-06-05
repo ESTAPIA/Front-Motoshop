@@ -1,0 +1,44 @@
+<%- include('../layouts/main') %>
+
+<!-- Contenedor dinámico de la Navbar -->
+<div id="navbar-container"></div>
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="bi bi-trophy text-warning"></i> Productos Más Vendidos</h1>
+    <div>
+      <div class="input-group me-2">
+        <label class="input-group-text" for="limit-select">Mostrar</label>
+        <select class="form-select" id="limit-select">
+          <option value="5">5 productos</option>
+          <option value="10" selected>10 productos</option>
+          <option value="20">20 productos</option>
+          <option value="50">50 productos</option>
+        </select>
+      </div>
+      <button id="refresh-btn" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-clockwise"></i> Actualizar
+      </button>
+    </div>
+  </div>
+  
+  <!-- Spinner de carga -->
+  <div id="loading-products" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+    <p class="mt-3">Cargando productos más vendidos...</p>
+  </div>
+  
+  <!-- Contenedor para los productos -->
+  <div id="products-container" class="row g-4" style="display: none;"></div>
+  
+  <!-- Mensaje de no hay productos -->
+  <div id="no-products-message" class="alert alert-info text-center" style="display: none;">
+    <i class="bi bi-info-circle-fill me-2"></i>
+    No se encontraron datos de productos vendidos.
+  </div>
+</div>
+
+<!-- JavaScript específico para la página -->
+<script src="/js/admin-mas-vendidos.js"></script>

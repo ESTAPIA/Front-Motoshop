@@ -1,0 +1,40 @@
+<%- include('../layouts/main') %>
+
+<!-- CSS específico para facturas -->
+<link rel="stylesheet" href="/css/facturas.css">
+
+<!-- Contenedor dinámico de la Navbar -->
+<div id="navbar-container"></div>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Mis Facturas</h1>
+  
+  <!-- Spinner de carga -->
+  <div id="loading-facturas" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+    <p class="mt-3">Cargando facturas...</p>
+  </div>
+  
+  <!-- Mensaje de no facturas -->
+  <div id="no-facturas-message" class="text-center py-5 d-none">
+    <i class="bi bi-receipt-cutoff fs-1 text-muted"></i>
+    <p class="mt-3 text-muted">No tienes facturas disponibles.</p>
+  </div>
+  
+  <!-- Contenedor de facturas -->
+  <div id="facturas-container" class="d-none">
+    <!-- Las facturas se cargarán dinámicamente aquí -->
+  </div>
+  
+  <!-- Paginación -->
+  <nav aria-label="Paginación de facturas">
+    <ul class="pagination justify-content-center mt-4" id="pagination">
+      <!-- La paginación se generará dinámicamente -->
+    </ul>
+  </nav>
+</div>
+
+<!-- JavaScript específico para facturas -->
+<script src="/js/facturas.js"></script>

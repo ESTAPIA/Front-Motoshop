@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title : 'Proyectointegracion' %></title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+      <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    
+    <!-- jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    <!-- Global JS -->
+    <script src="/js/global.js"></script>
+    <script src="/js/mini-cart.js"></script>
+    <script src="/js/navbar-loader.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- API Configuration - Simple version without assumptions -->
+    <script>
+        // Base URL for API calls
+        const API_BASE_URL = "<%= typeof apiBaseUrl !== 'undefined' ? apiBaseUrl : 'https://backmotos.onrender.com/api' %>";
+    </script>
+    <script>
+        window.API_BASE_URL = 'https://backmotos.onrender.com/api';
+    </script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Contenedor dinámico de la Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- Contenido principal -->
+    <main class="flex-grow-1">
+        <!-- El contenido de la página se renderizará aquí -->
+        <div class="content">
+            <!-- Todo el contenido de home.ejs se renderiza aquí -->
+        </div>
+    </main>
+    
+
+
+    <!-- Script para cargar navbar dinámicamente -->
+    <script src="/js/navbar-loader.js"></script>
+</body>
+</html>
