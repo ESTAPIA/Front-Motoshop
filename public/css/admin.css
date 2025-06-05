@@ -3,6 +3,21 @@
    Aplicando nueva paleta con efectos premium
    ======================================== */
 
+/* Variables CSS para la paleta de colores */
+:root {
+  --primary-green: #2E7D32;
+  --secondary-green: #388E3C;
+  --hover-green: #1B5E20;
+  --dark-green: #1B5E20;
+  --light-green: #C8E6C9;
+  --primary-cream: #FFF8E1;
+  --accent-cream: #FFFDE7;
+  --secondary-cream: #F9F6E9;
+  --border-gray: #E0E0E0;
+  --warning-color: #FF9800;
+  --error-color: #F44336;
+}
+
 /* Cards del dashboard modernizados - EXCLUIR CARTAS DE ESTADÍSTICAS */
 .card:not(.dashboard-stats-card) {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);

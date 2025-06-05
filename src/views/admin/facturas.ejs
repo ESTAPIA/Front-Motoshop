@@ -13,13 +13,17 @@
   
   <!-- Estilos personalizados -->
   <link rel="stylesheet" href="/css/admin.css">
-  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <!-- Contenedor para el navbar (cargado dinámicamente) -->
+  <%- include('../layouts/main') %>
+
+  <!-- CSS específico para facturas admin -->
+  <link rel="stylesheet" href="/css/admin.css">
+
+  <!-- Contenedor dinámico de la Navbar -->
   <div id="navbar-container"></div>
 
-  <div class="container-fluid py-4">
+  <div class="container mt-4">
     <div class="row mb-4">
       <div class="col-md-8">
         <h1 class="mb-0">Gestión de Facturas</h1>
@@ -67,7 +71,7 @@
 
     <!-- Estadísticas de facturación -->
     <div class="card mb-4">
-      <div class="card-header bg-primary text-white">
+      <div class="card-header">
         <h5 class="mb-0">Estadísticas de Facturación</h5>
       </div>
       <div class="card-body">
@@ -164,9 +168,9 @@
     <div class="modal fade" id="factura-detail-modal" tabindex="-1" aria-labelledby="facturaDetailModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
-          <div class="modal-header bg-primary text-white">
+          <div class="modal-header">
             <h5 class="modal-title" id="facturaDetailModalLabel">Detalles de la Factura</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <!-- Spinner de carga para los detalles -->
