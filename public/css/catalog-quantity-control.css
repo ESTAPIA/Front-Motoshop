@@ -1,0 +1,34 @@
+/* Estilos para el control de cantidad en las tarjetas de productos */
+.quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-control .input-group {
+  width: auto;
+}
+
+.quantity-control .qty-input {
+  max-width: 45px;
+  text-align: center;
+  padding: 0.25rem;
+  border-left: none;
+  border-right: none;
+}
+
+.quantity-control .btn {
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-footer {
+  padding: 0.75rem;
+}
+
+/* Animación para destacar cambios de cantidad */
+.qty-input.changed {
+  background-color: #e8f4ff;
+  transition: background-color 0.3s ease;
+}
