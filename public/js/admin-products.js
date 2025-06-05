@@ -863,7 +863,7 @@ $(function() {
     showLoading('Eliminando producto...');
     
     $.ajax({
-      url: `${window.API_BASE_URL}/productos/${productId}`,
+      url: `${window.API_BASE_URL}/productos/admin/${productId}`,
       type: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`,
