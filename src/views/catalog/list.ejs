@@ -232,8 +232,182 @@
   <div class="spacer-before-footer mb-5 pb-4"></div>
 </main>
 
+<!-- Modal de Autenticación con Tabs (Bootstrap) -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="bi bi-shield-lock-fill me-2"></i>Acceso al Sistema
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Pestañas de navegación -->
+        <ul class="nav nav-tabs" id="authTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" 
+                    data-bs-target="#login-tab-pane" type="button" role="tab" 
+                    aria-controls="login-tab-pane" aria-selected="true">
+              <i class="bi bi-box-arrow-in-right me-1"></i>Iniciar Sesión
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="register-tab" data-bs-toggle="tab" 
+                    data-bs-target="#register-tab-pane" type="button" role="tab" 
+                    aria-controls="register-tab-pane" aria-selected="false">
+              <i class="bi bi-person-plus-fill me-1"></i>Registrarse
+            </button>
+          </li>
+        </ul>
+          <!-- Contenido de las pestañas -->
+        <div class="tab-content pt-3" id="authTabsContent">
+          <!-- Pestaña de Login -->
+          <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel" 
+               aria-labelledby="login-tab" tabindex="0">
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="cedula" class="form-label">
+                  <i class="bi bi-person-badge me-1"></i>Cédula
+                </label>
+                <input type="text" class="form-control" id="cedula" required 
+                       placeholder="Ingresa tu número de cédula">
+              </div>
+              <div class="form-group">
+                <label for="password" class="form-label">
+                  <i class="bi bi-lock-fill me-1"></i>Contraseña
+                </label>
+                <input type="password" class="form-control" id="password" required 
+                       placeholder="Ingresa tu contraseña">
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                <i class="bi bi-box-arrow-in-right me-2"></i>Ingresar
+              </button>
+            </form>
+          </div>
+          
+          <!-- Pestaña de Registro -->
+          <div class="tab-pane fade" id="register-tab-pane" role="tabpanel" 
+               aria-labelledby="register-tab" tabindex="0">
+            <form id="registerForm">
+              <div class="form-group">
+                <label for="newCedula" class="form-label">
+                  <i class="bi bi-person-badge me-1"></i>Cédula
+                </label>
+                <input type="text" class="form-control" id="newCedula" required 
+                       placeholder="Número de cédula sin guiones">
+                <div class="form-text">Ingresa tu número de cédula sin guiones ni espacios.</div>
+              </div>
+              <div class="form-group">
+                <label for="newPassword" class="form-label">
+                  <i class="bi bi-lock-fill me-1"></i>Contraseña
+                </label>
+                <input type="password" class="form-control" id="newPassword" required 
+                       placeholder="Crea una contraseña segura">
+              </div>
+              <div class="form-group">
+                <label for="confirmPassword" class="form-label">
+                  <i class="bi bi-shield-check me-1"></i>Confirmar contraseña
+                </label>
+                <input type="password" class="form-control" id="confirmPassword" required 
+                       placeholder="Confirma tu contraseña">
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                <i class="bi bi-person-plus-fill me-2"></i>Registrarse
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Confirmación de Registro -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="bi bi-check-circle-fill me-2"></i>¡Registro Exitoso!
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="mb-4">
+          <i class="bi bi-check-circle-fill" style="font-size: 4rem;"></i>
+        </div>
+        <p id="success-message" class="lead mb-3">Usuario registrado correctamente</p>
+        <p class="text-muted mb-4">Iniciando sesión automáticamente...</p>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="spinner-border me-3" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+          <span class="text-muted">Preparando tu cuenta...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Error en Registro -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Error en el Registro
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="mb-4">
+          <i class="bi bi-exclamation-triangle-fill" style="font-size: 4rem;"></i>
+        </div>
+        <p id="error-message" class="lead mb-4">Ha ocurrido un error al procesar el registro</p>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="bi bi-arrow-left me-2"></i>Intentar de Nuevo
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Error en Login -->
+<div class="modal fade" id="loginErrorModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="bi bi-shield-x-fill me-2"></i>Error de Autenticación
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="mb-4">
+          <i class="bi bi-shield-x-fill" style="font-size: 4rem;"></i>
+        </div>
+        <p id="login-error-message" class="lead mb-4">Credenciales inválidas</p>
+        <p class="text-muted mb-4">Por favor verifica tu cédula y contraseña</p>
+        <div class="d-flex justify-content-center gap-2">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="bi bi-arrow-left me-2"></i>Intentar de Nuevo
+          </button>
+          <button type="button" class="btn btn-outline-primary" id="recover-password-btn">
+            <i class="bi bi-question-circle me-2"></i>¿Olvidaste tu contraseña?
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Footer -->
 <%- include('../partials/footer') %>
 
 <!-- JavaScript específico para el catálogo -->
 <script src="/js/catalog.js"></script>
+<!-- Agregar el script de autenticación de home.js -->
+<script src="/js/home.js"></script>
