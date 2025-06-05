@@ -969,7 +969,7 @@ $(function() {
       const charCount = address.length;
       let countText = `${charCount} caracteres`;
       if (charCount < 10) {
-        countText += ` (mínimo 10)`;
+        countText += ` (mínimo 1)`;
       }
       
       if (!$('.char-counter').length) {
