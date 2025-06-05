@@ -225,5 +225,36 @@
   </div>
 </div>
 
+<!-- Modal para confirmar eliminación de producto -->
+<div class="modal fade" id="delete-product-modal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="deleteProductModalLabel">
+          <i class="bi bi-exclamation-triangle me-2"></i>Confirmar eliminación
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning">
+          <i class="bi bi-info-circle me-2"></i>
+          <strong>Atención:</strong> Esta acción marcará el producto como inactivo.
+        </div>
+        <p class="mb-0">¿Está seguro que desea eliminar el producto <strong id="product-name-to-delete"></strong>?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="bi bi-x-circle me-1"></i>Cancelar
+        </button>
+        <button type="button" class="btn btn-danger" id="confirm-delete-product">
+          <i class="bi bi-trash me-1"></i>Eliminar producto
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
 <!-- JavaScript específico para la gestión de productos -->
 <script src="/js/admin-products.js"></script>
