@@ -77,6 +77,52 @@
   animation: pulse 1.5s infinite;
 }
 
+/* Fondo animado verde para pedidos - Copiado de catalog.css */
+.orders-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a2e1a 0%, #2d5a2d 50%, #0f2e0f 100%);
+  z-index: -1;
+  overflow: hidden;
+}
+
+.orders-background .particles,
+.orders-background .lightning-effect {
+  opacity: 0.5;
+}
+
+/* Clases para textos con color crema sobre fondo verde */
+.text-cream {
+  color: #FFF8E1 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+}
+
+/* Estilos para el botón "Seguir comprando" */
+.btn-outline-light {
+  border-color: var(--primary-cream, #FFF8E1) !important;
+  color: var(--primary-cream, #FFF8E1) !important;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background: var(--primary-cream, #FFF8E1) !important;
+  border-color: var(--primary-cream, #FFF8E1) !important;
+  color: var(--primary-green, #2E7D32) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 248, 225, 0.3);
+}
+
+/* Asegurar que el contenido sea visible sobre el fondo */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .order-card .card-body .row {
