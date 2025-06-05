@@ -19,6 +19,9 @@ $(function() {
   // Cargar facturas iniciales
   loadFacturas();
   
+  // Aplicar cambio de color azul a verde
+  applyGreenColorScheme();
+  
   // Funciones
   function loadNavbar() {
     const role = localStorage.getItem('role');
@@ -44,6 +47,9 @@ $(function() {
           renderFacturas(data.content);
           renderPagination(data);
           $('#facturas-container').show();
+          
+          // Aplicar el esquema de color verde después de renderizar
+          applyGreenColorScheme();
         } else {
           $('#no-facturas-message').show();
         }
@@ -81,10 +87,11 @@ $(function() {
         minute: '2-digit'
       });
       
+      // Cambiamos "bg-primary" por "bg-success" para aplicar el esquema verde
       html += `
         <div class="col-md-6 mb-4">
           <div class="card h-100">
-            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
               <h5 class="mb-0">Factura #${factura.id}</h5>
               <span class="badge bg-light text-dark">Pedido #${factura.idPedido}</span>
             </div>
@@ -98,7 +105,7 @@ $(function() {
               </div>
             </div>
             <div class="card-footer d-flex justify-content-end gap-2">
-              <button class="btn btn-outline-primary btn-sm view-invoice-btn" data-invoice-id="${factura.id}">
+              <button class="btn btn-outline-success btn-sm view-invoice-btn" data-invoice-id="${factura.id}">
                 <i class="bi bi-receipt me-1"></i>Ver Factura
               </button>
               <button class="btn btn-outline-secondary btn-sm view-order-btn" data-order-id="${factura.idPedido}">
@@ -140,6 +147,8 @@ $(function() {
       success: function(invoiceDetails) {
         // Actualizar contenido del modal con los detalles de la factura
         updateInvoiceModalContent(invoiceDetails);
+        // Aplicar esquema de color verde después de cargar el modal
+        applyGreenColorScheme();
       },
       error: function(xhr) {
         // Cerrar el modal y mostrar mensaje de error
@@ -154,19 +163,19 @@ $(function() {
     // Si el modal ya existe, removerlo para evitar duplicados
     $('#invoice-detail-modal').remove();
     
-    // Crear el modal
+    // Crear el modal (cambiando bg-primary por bg-success)
     const modalHtml = `
       <div class="modal fade" id="invoice-detail-modal" tabindex="-1" aria-labelledby="invoiceDetailModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
+            <div class="modal-header bg-success text-white">
               <h5 class="modal-title" id="invoiceDetailModalLabel">Detalles de la Factura</h5>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               ${isLoading ? `
                 <div class="text-center py-5" id="invoice-loading">
-                  <div class="spinner-border text-primary" role="status">
+                  <div class="spinner-border text-success" role="status">
                     <span class="visually-hidden">Cargando...</span>
                   </div>
                   <p class="mt-3">Cargando detalles de la factura...</p>
@@ -176,7 +185,7 @@ $(function() {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="print-invoice-btn">
+              <button type="button" class="btn btn-success" id="print-invoice-btn">
                 <i class="bi bi-printer me-1"></i>Imprimir
               </button>
             </div>
@@ -383,6 +392,8 @@ $(function() {
       success: function(orderDetails) {
         // Actualizar contenido del modal con los detalles del pedido
         updateOrderModalContent(orderDetails);
+        // Aplicar esquema de color verde después de cargar el modal
+        applyGreenColorScheme();
       },
       error: function(xhr) {
         // Cerrar el modal y mostrar mensaje de error
@@ -397,19 +408,19 @@ $(function() {
     // Si el modal ya existe, removerlo para evitar duplicados
     $('#order-detail-modal').remove();
     
-    // Crear el modal
+    // Crear el modal (cambiando bg-primary por bg-success)
     const modalHtml = `
       <div class="modal fade" id="order-detail-modal" tabindex="-1" aria-labelledby="orderDetailModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
+            <div class="modal-header bg-success text-white">
               <h5 class="modal-title" id="orderDetailModalLabel">Detalles del Pedido</h5>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               ${isLoading ? `
                 <div class="text-center py-5" id="order-loading">
-                  <div class="spinner-border text-primary" role="status">
+                  <div class="spinner-border text-success" role="status">
                     <span class="visually-hidden">Cargando...</span>
                   </div>
                   <p class="mt-3">Cargando detalles del pedido...</p>
@@ -536,7 +547,7 @@ $(function() {
       case 'Enviado':
         return 'bg-info';
       case 'Entregado':
-        return 'bg-primary';
+        return 'bg-success'; // Cambiado de bg-primary a bg-success
       case 'Cancelado':
         return 'bg-danger';
       default:
@@ -608,4 +619,113 @@ $(function() {
       alert(message);
     }
   }
+  
+  // Nueva función para cambiar los colores azules a verdes en tiempo real
+  function applyGreenColorScheme() {
+    // Cambiar los encabezados de tarjetas de azul a verde
+    $('.card-header.bg-primary').removeClass('bg-primary').addClass('bg-success');
+    
+    // Cambiar los botones y badges relacionados con facturas de azul a verde
+    $('.btn-primary').removeClass('btn-primary').addClass('btn-success');
+    $('.btn-outline-primary').removeClass('btn-outline-primary').addClass('btn-outline-success');
+    $('.badge.bg-primary').removeClass('bg-primary').addClass('bg-success');
+    $('.spinner-border.text-primary').removeClass('text-primary').addClass('text-success');
+    
+    // Cambiar colores en modales
+    $('.modal-header.bg-primary').removeClass('bg-primary').addClass('bg-success');
+    
+    // Cambiar estilos inline si existen
+    $('[style*="background-color: #0d6efd"]').css('background-color', '#198754');
+    $('[style*="color: #0d6efd"]').css('color', '#198754');
+    $('[style*="border-color: #0d6efd"]').css('border-color', '#198754');
+  }
+});
+
+// Ejecutar cuando el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+    // Crear y añadir el fondo verde animado
+    const facturasBackground = document.createElement('div');
+    facturasBackground.className = 'facturas-background';
+    facturasBackground.innerHTML = `
+        <div class="particles"></div>
+        <div class="lightning-effect"></div>
+    `;
+    
+    // Añadir el fondo al principio del contenido principal (body o main)
+    const mainContent = document.querySelector('main') || document.body;
+    mainContent.insertBefore(facturasBackground, mainContent.firstChild);
+    
+    // Añadir los estilos necesarios para el fondo animado
+    const style = document.createElement('style');
+    style.textContent = `
+        .facturas-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a2e1a 0%, #2d5a2d 50%, #0f2e0f 100%);
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .facturas-background .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="%234CAF50" opacity="0.5"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/></circle><circle cx="30" cy="30" r="0.5" fill="%2381C784" opacity="0.7"><animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/></circle><circle cx="70" cy="20" r="1.5" fill="%234CAF50" opacity="0.4"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/></circle></svg>') repeat;
+            animation: float 20s infinite linear;
+            opacity: 0.5;
+        }
+        
+        .facturas-background .lightning-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+            opacity: 0.5;
+        }
+        
+        /* Clases para textos con color crema sobre fondo verde */
+        .text-cream {
+            color: var(--primary-cream, #FFF8E1) !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+        }
+        
+        .text-cream-help {
+            color: var(--accent-cream, #FFFDF5) !important;
+            opacity: 0.9;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+        
+        @keyframes float {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Actualizar los títulos para que sean visibles sobre el fondo verde
+    const titles = document.querySelectorAll('h1, h2, .container > .mt-5 > h1');
+    titles.forEach(title => {
+        if (!title.classList.contains('text-cream')) {
+            title.classList.add('text-cream');
+        }
+    });
+    
+    const subtitles = document.querySelectorAll('p.lead, .container > .mt-5 > p');
+    subtitles.forEach(subtitle => {
+        if (!subtitle.classList.contains('text-cream-help')) {
+            subtitle.classList.add('text-cream-help');
+        }
+    });
 });
