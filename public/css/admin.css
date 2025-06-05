@@ -3,6 +3,21 @@
    Aplicando nueva paleta con efectos premium
    ======================================== */
 
+/* Variables CSS para la paleta de colores */
+:root {
+  --primary-green: #2E7D32;
+  --secondary-green: #388E3C;
+  --hover-green: #1B5E20;
+  --dark-green: #1B5E20;
+  --light-green: #C8E6C9;
+  --primary-cream: #FFF8E1;
+  --accent-cream: #FFFDE7;
+  --secondary-cream: #F9F6E9;
+  --border-gray: #E0E0E0;
+  --warning-color: #FF9800;
+  --error-color: #F44336;
+}
+
 /* Cards del dashboard modernizados - EXCLUIR CARTAS DE ESTADÍSTICAS */
 .card:not(.dashboard-stats-card) {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -424,4 +439,34 @@
 .dashboard-stats-card.text-dark .card-text,
 .dashboard-stats-card.text-dark i {
   color: #212529 !important;
+}
+
+/* Estilos específicos para mini cartas de estadísticas en facturas */
+.stats-mini-card {
+  border-radius: 10px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease !important;
+  background: white !important;
+  border-width: 2px !important;
+}
+
+.stats-mini-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+.stats-mini-card .card-body {
+  padding: 20px !important;
+}
+
+.stats-mini-card h6 {
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.stats-mini-card h4 {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
 }
