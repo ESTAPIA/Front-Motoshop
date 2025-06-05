@@ -677,9 +677,7 @@ $(function() {
               <div id="invoice-content" class="d-none"></div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" id="print-invoice-btn">
-                <i class="bi bi-printer me-2"></i>Imprimir Factura
-              </button>
+
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
