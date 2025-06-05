@@ -25,11 +25,37 @@ $(function() {
   // Variables para modales
   let userEditModal;
   let userCreateModal;
+  let userDeleteModal; // Nueva variable para el modal de eliminación
+  
+  // Crear modal de confirmación de eliminación al inicio
+  $('body').append(`
+    <div class="modal fade" id="user-delete-modal" tabindex="-1" aria-labelledby="user-delete-modal-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title" id="user-delete-modal-label">Confirmar eliminación</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>¿Está seguro que desea eliminar el usuario <span id="user-cedula-to-delete" class="fw-bold"></span>?</p>
+            <p class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Esta acción no se puede deshacer.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" id="confirm-delete-user-btn">
+              <i class="bi bi-trash me-2"></i>Eliminar usuario
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
   
   // Inicializar modales
   document.addEventListener('DOMContentLoaded', function() {
     userEditModal = new bootstrap.Modal(document.getElementById('user-edit-modal'));
     userCreateModal = new bootstrap.Modal(document.getElementById('user-create-modal'));
+    userDeleteModal = new bootstrap.Modal(document.getElementById('user-delete-modal'));
   });
   
   // Cargar navbar y usuarios iniciales
@@ -593,10 +619,26 @@ $(function() {
     const cedula = $(this).data('cedula');
     const tipoUsuario = $(this).data('tipo');
     
-    // Mostrar confirmación antes de eliminar
-    if (confirm(`¿Está seguro que desea eliminar el usuario ${cedula}? Esta acción no se puede deshacer.`)) {
-      deleteUser(cedula);
-    }
+    // Configurar el modal con los datos del usuario
+    $('#user-cedula-to-delete').text(cedula);
+    
+    // Guardar la cédula como atributo data en el botón de confirmación
+    $('#confirm-delete-user-btn').data('cedula', cedula);
+    
+    // Mostrar el modal de confirmación - obteniendo la instancia directamente
+    const deleteModal = new bootstrap.Modal(document.getElementById('user-delete-modal'));
+    deleteModal.show();
+  });
+  
+  // Manejar la confirmación de eliminación desde el modal
+  $('#confirm-delete-user-btn').on('click', function() {
+    const cedula = $(this).data('cedula');
+    
+    // Cerrar el modal - obteniendo la instancia directamente
+    bootstrap.Modal.getInstance(document.getElementById('user-delete-modal')).hide();
+    
+    // Llamar a la función de eliminación
+    deleteUser(cedula);
   });
   
   // Función para eliminar usuario
