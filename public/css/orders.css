@@ -120,7 +120,7 @@
 /* Asegurar que el contenido sea visible sobre el fondo */
 .container {
   position: relative;
-  z-index: 1;
+
 }
 
 /* Responsive styles */
