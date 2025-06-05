@@ -1,0 +1,2128 @@
+/* Estilos para la navbar y mini-carrito */
+
+/* ========================================
+   ITERACIÓN 2: NAVBAR CON PALETA VERDE + CREMA
+   Aplicando nueva paleta de colores
+   ======================================== */
+
+/* Mejoras para la navbar principal */
+.navbar {
+  background-color: var(--primary-cream) !important;
+  border-bottom: 2px solid var(--primary-green);
+  box-shadow: 0 2px 4px rgba(46, 125, 50, 0.1);
+}
+
+.navbar-brand {
+  color: var(--primary-green) !important;
+  font-weight: 600;
+}
+
+.navbar-brand:hover {
+  color: var(--dark-green) !important;
+}
+
+.navbar-nav .nav-link {
+  color: var(--dark-green) !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--primary-green) !important;
+  background-color: var(--light-green);
+  border-radius: 4px;
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--primary-green) !important;
+  background-color: var(--light-green);
+  border-radius: 4px;
+}
+
+/* Botones en navbar */
+.navbar .btn-outline-success {
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+  background-color: transparent;
+}
+
+.navbar .btn-outline-success:hover {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+  color: white;
+}
+
+.navbar .btn-success {
+  background-color: var(--secondary-green);
+  border-color: var(--secondary-green);
+}
+
+.navbar .btn-success:hover {
+  background-color: var(--hover-green);
+  border-color: var(--hover-green);
+}
+
+/* Ajustes para el icono del carrito */
+#cart-icon {
+  padding-right: 1rem;
+}
+
+#cart-counter {
+  font-size: 0.6rem;
+  transform: translate(-50%, -30%) !important;
+  background-color: var(--secondary-green) !important;
+  border: 2px solid var(--primary-cream);
+}
+
+/* Mejoras para el icono del carrito */
+#cart-icon {
+  color: var(--primary-green);
+  transition: all 0.3s ease;
+}
+
+#cart-icon:hover {
+  color: var(--hover-green);
+  transform: scale(1.05);
+}
+
+/* Estilo para el modal del carrito - Mejoras con nueva paleta */
+.modal-dialog-right {
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100vh;
+  width: 600px !important; /* Aumentar ancho para mejor visualización */
+  max-width: 90%; /* Límite en móviles */
+}
+
+.modal-dialog-right .modal-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-cream);
+  border: 2px solid var(--primary-green);
+}
+
+/* Header del modal con nueva paleta */
+.modal-dialog-right .modal-header {
+  background-color: var(--primary-green);
+  color: white;
+  border-bottom: none;
+}
+
+.modal-dialog-right .modal-title {
+  color: white;
+  font-weight: 600;
+}
+
+.modal-dialog-right .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+.modal-dialog-right .modal-body {
+  overflow-y: auto;
+  background-color: var(--primary-cream);
+}
+
+/* Estilos para los items del mini-carrito */
+.mini-cart-img-container {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: var(--secondary-cream);
+  border: 1px solid var(--border-gray);
+  flex-shrink: 0;
+}
+
+.mini-cart-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mini-cart-item-details {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.mini-cart-item-details h6 {
+  white-space: normal; /* Permitir saltos de línea */
+  word-break: break-word; /* Partir palabras largas */
+  margin-bottom: 5px;
+}
+
+.mini-cart-items {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.mini-cart-items .list-group-item {
+  border-bottom: 1px solid var(--border-gray);
+  padding: 10px;
+  background-color: var(--accent-cream);
+  margin-bottom: 5px;
+  border-radius: 6px;
+  border: 1px solid var(--border-gray);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mini-cart-items .list-group-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.05), transparent);
+  transition: left 0.6s;
+}
+
+.mini-cart-items .list-group-item:hover::before {
+  left: 100%;
+}
+
+.mini-cart-items .list-group-item:hover {
+  transform: translateX(3px);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
+}
+
+.mini-cart-img-container {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.mini-cart-img-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 4px;
+  background: linear-gradient(45deg, 
+    rgba(46, 125, 50, 0.05) 0%, 
+    transparent 50%, 
+    rgba(46, 125, 50, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mini-cart-img-container:hover::after {
+  opacity: 1;
+}
+
+.mini-cart-img-container:hover {
+  transform: scale(1.05);
+}
+
+/* Botones de cantidad mejorados */
+.mini-cart-decrease, .mini-cart-increase {
+  border-radius: 50% !important;
+  width: 30px !important;
+  height: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.1) !important;
+}
+
+.mini-cart-decrease:hover, .mini-cart-increase:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2) !important;
+}
+
+.mini-cart-decrease {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%) !important;
+  border-color: var(--error-color) !important;
+  color: var(--error-color) !important;
+}
+
+.mini-cart-decrease:hover {
+  background: linear-gradient(135deg, var(--error-color) 0%, #d32f2f 100%) !important;
+  color: white !important;
+}
+
+.mini-cart-increase {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-cream) 100%) !important;
+  border-color: var(--primary-green) !important;
+  color: var(--primary-green) !important;
+}
+
+.mini-cart-increase:hover {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%) !important;
+  color: white !important;
+}
+
+/* Cantidad del producto destacada */
+.mini-cart-quantity {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, white 100%) !important;
+  border: 2px solid var(--primary-green) !important;
+  border-radius: 8px !important;
+  padding: 4px 8px !important;
+  font-weight: 700 !important;
+  color: var(--primary-green) !important;
+  min-width: 40px !important;
+  text-align: center !important;
+  box-shadow: 0 2px 5px rgba(46, 125, 50, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Botón de eliminar producto mejorado */
+.mini-cart-remove {
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%) !important;
+  border: 2px solid var(--error-color) !important;
+  color: var(--error-color) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.mini-cart-remove:hover {
+  background: linear-gradient(135deg, var(--error-color) 0%, #d32f2f 100%) !important;
+  color: white !important;
+  transform: scale(1.1) rotate(10deg) !important;
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3) !important;
+}
+
+/* Información del producto mejorada */
+.mini-cart-product-row h6 {
+  color: var(--dark-green) !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  transition: color 0.3s ease !important;
+}
+
+.mini-cart-items .list-group-item:hover .mini-cart-product-row h6 {
+  color: var(--primary-green) !important;
+}
+
+/* Precios mejorados */
+.mini-cart-bottom-row .text-muted {
+  color: var(--medium-gray) !important;
+  font-size: 0.8rem !important;
+}
+
+.mini-cart-bottom-row .fw-bold {
+  color: var(--primary-green) !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+}
+
+/* Estado vacío mejorado */
+.cart-loading-state {
+  background: linear-gradient(135deg, var(--accent-cream) 0%, white 100%);
+  border-radius: 12px;
+  margin: 10px;
+  border: 2px dashed var(--border-gray);
+}
+
+.loading-animation {
+  gap: 10px;
+}
+
+.loading-text {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Botón vaciar carrito mejorado */
+.btn-empty-cart {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-empty-cart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-empty-cart:hover::before {
+  left: 100%;
+}
+
+/* Scroll personalizado para el carrito */
+.cart-body-modern::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-body-modern::-webkit-scrollbar-track {
+  background: var(--accent-cream);
+  border-radius: 3px;
+}
+
+.cart-body-modern::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.cart-body-modern::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--hover-green) 100%);
+}
+
+/* Animación de entrada para items del carrito */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.mini-cart-items .list-group-item {
+  animation: slideInFromLeft 0.4s ease-out;
+}
+
+.mini-cart-items .list-group-item:nth-child(1) { animation-delay: 0.1s; }
+.mini-cart-items .list-group-item:nth-child(2) { animation-delay: 0.2s; }
+.mini-cart-items .list-group-item:nth-child(3) { animation-delay: 0.3s; }
+.mini-cart-items .list-group-item:nth-child(4) { animation-delay: 0.4s; }
+.mini-cart-items .list-group-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* Estado de carga del contador */
+.cart-badge.loading {
+  animation: badgeLoading 1s ease-in-out infinite;
+}
+
+@keyframes badgeLoading {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Efecto de actualización del total */
+.total-amount.updating {
+  animation: totalUpdate 0.6s ease-out;
+}
+
+@keyframes totalUpdate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); color: var(--secondary-green); }
+  100% { transform: scale(1); }
+}
+
+/* Mejoras para pantallas pequeñas del modal */
+@media (max-width: 768px) {
+  .modal-cart-modern {
+    width: 100% !important;
+  }
+  
+  .cart-header-modern {
+    padding: 15px 20px;
+  }
+  
+  .cart-icon-header {
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+  
+  .cart-title {
+    font-size: 1rem;
+  }
+  
+  .cart-subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .btn-close-modern {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .cart-body-modern {
+    padding: 15px;
+  }
+  
+  .cart-footer-modern {
+    padding: 15px 20px;
+  }
+  
+  .btn-view-cart {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ========================================
+   FIN DE MEJORAS DEL MODAL DE CARRITO
+   ======================================== */
+
+/* ========================================
+   NAVBAR GUEST MODERNIZADO - PALETA VERDE + CREMA
+   Estilos específicos para usuarios invitados
+   ======================================== */
+
+/* Navbar guest moderna */
+.navbar-guest-modern {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%) !important;
+  border-bottom: 3px solid var(--primary-green);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.08);
+  padding: 12px 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+/* Asegurar que no haya espacios en blanco arriba del navbar */
+.navbar-guest-modern + * {
+  margin-top: 0;
+}
+
+/* Brand mejorado */
+.brand-enhanced {
+  color: var(--primary-green) !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.brand-enhanced:hover {
+  color: var(--hover-green) !important;
+  transform: scale(1.05);
+}
+
+.brand-enhanced .bi-motorcycle {
+  font-size: 1.8rem;
+  color: var(--secondary-green);
+}
+
+.brand-text {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Enlaces de navegación mejorados */
+.nav-link-enhanced {
+  color: var(--dark-green) !important;
+  font-weight: 600;
+  padding: 8px 16px !important;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  margin: 0 4px;
+}
+
+.nav-link-enhanced:hover {
+  color: var(--primary-green) !important;
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-cream) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+}
+
+.nav-link-enhanced .bi {
+  font-size: 1.1rem;
+}
+
+/* Botón de autenticación premium */
+.btn-auth-guest {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-auth-guest::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-auth-guest:hover::before {
+  left: 100%;
+}
+
+.btn-auth-guest:hover {
+  background: linear-gradient(135deg, var(--hover-green) 0%, var(--primary-green) 100%);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+.btn-auth-guest:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s;
+}
+
+/* Texto del botón de autenticación */
+.auth-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.auth-primary {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.auth-secondary {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Botón hamburguesa personalizado */
+.custom-toggler {
+  border: 2px solid var(--primary-green);
+  border-radius: 8px;
+  padding: 6px 10px;
+  transition: all 0.3s ease;
+}
+
+.custom-toggler:hover {
+  background-color: var(--light-green);
+  border-color: var(--secondary-green);
+}
+
+.custom-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.25);
+}
+
+/* Responsive Design para Navbar Guest */
+@media (max-width: 991px) {
+  .navbar-guest-modern {
+    padding: 8px 0;
+  }
+  
+  .brand-enhanced {
+    font-size: 1.3rem;
+  }
+  
+  .brand-enhanced .bi-motorcycle {
+    font-size: 1.5rem;
+  }
+  
+  .btn-auth-guest {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .auth-text {
+    align-items: center;
+  }
+  
+  .nav-link-enhanced {
+    margin: 2px 0;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .brand-text {
+    font-size: 1.1rem;
+  }
+  
+  .btn-auth-guest {
+    padding: 12px 16px;
+  }
+  
+  .auth-primary {
+    font-size: 0.85rem;
+  }
+  
+  .auth-secondary {
+    font-size: 0.7rem;
+  }
+}
+
+/* ========================================
+   NAVBAR USER MODERNIZADO - PALETA VERDE + CREMA
+   Navegación profesional para usuarios autenticados
+   ======================================== */
+
+/* Navbar user moderna */
+.navbar-user-modern {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%) !important;
+  border-bottom: 3px solid var(--primary-green);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.08);
+  padding: 12px 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.navbar-user-modern:hover {
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.12);
+}
+
+/* Brand mejorado */
+.navbar-user-modern .brand-enhanced {
+  color: var(--primary-green) !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.navbar-user-modern .brand-enhanced:hover {
+  color: var(--hover-green) !important;
+  transform: scale(1.05);
+}
+
+.navbar-user-modern .brand-enhanced .bi-motorcycle {
+  font-size: 1.8rem;
+  color: var(--secondary-green);
+}
+
+.navbar-user-modern .brand-text {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Enlaces de navegación mejorados */
+.nav-link-enhanced {
+  color: var(--dark-green) !important;
+  font-weight: 600;
+  padding: 8px 16px !important;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  margin: 0 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.nav-link-enhanced:hover {
+  color: var(--primary-green) !important;
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-cream) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+}
+
+.nav-link-enhanced:hover::before {
+  left: 100%;
+}
+
+.nav-link-enhanced.nav-link-active {
+  color: var(--primary-green) !important;
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: white !important;
+  box-shadow: 0 3px 10px rgba(46, 125, 50, 0.25);
+}
+
+.nav-link-enhanced .bi {
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+/* Carrito modernizado */
+.nav-cart-modern {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: white !important;
+  padding: 10px 15px !important;
+  border-radius: 15px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-cart-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.nav-cart-modern:hover {
+  color: white !important;
+  background: linear-gradient(135deg, var(--hover-green) 0%, var(--secondary-green) 100%);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
+}
+
+.nav-cart-modern:hover::before {
+  left: 100%;
+}
+
+.nav-cart-modern.cart-clicked {
+  transform: scale(0.95);
+  transition: transform 0.1s;
+}
+
+.nav-cart-modern .bi-cart3 {
+  font-size: 1.3rem;
+}
+
+/* Badge del carrito modernizado */
+.cart-badge {
+  background: linear-gradient(135deg, #e91e63, #f44336) !important;
+  color: white !important;
+  font-size: 0.7rem !important;
+  font-weight: 700;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.4);
+  min-width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.cart-badge-pulse {
+  animation: cartUpdatePulse 0.6s ease-out !important;
+}
+
+@keyframes cartUpdatePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Dropdown de usuario profesional */
+.user-dropdown-modern {
+  color: var(--dark-green) !important;
+  padding: 8px 16px !important;
+  border-radius: 15px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: linear-gradient(135deg, var(--accent-cream) 0%, var(--light-green) 100%);
+  border: 2px solid var(--primary-green);
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.1);
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.user-dropdown-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.user-dropdown-modern:hover {
+  color: var(--primary-green) !important;
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--secondary-cream) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.2);
+}
+
+.user-dropdown-modern:hover::before {
+  left: 100%;
+}
+
+.user-dropdown-modern.dropdown-opening {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: white !important;
+}
+
+.user-avatar {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
+}
+
+.user-avatar .bi-person-circle {
+  font-size: 1.5rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.user-cedula {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: inherit;
+}
+
+.user-cedula.user-info-confirmed {
+  animation: confirmPulse 0.5s ease-out;
+}
+
+@keyframes confirmPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.user-role {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 500;
+  color: inherit;
+}
+
+/* Menú dropdown modernizado */
+.user-dropdown-menu {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, white 100%);
+  border: 2px solid var(--primary-green);
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(46, 125, 50, 0.15);
+  padding: 0;
+  margin-top: 10px;
+  min-width: 280px;
+  overflow: hidden;
+}
+
+.dropdown-header {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: white;
+  padding: 15px 20px;
+  margin: 0;
+  border: none;
+}
+
+.dropdown-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar-large {
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-username {
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+}
+
+.dropdown-role {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+}
+
+.dropdown-item-modern {
+  color: var(--dark-green) !important;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+}
+
+.dropdown-item-modern:hover {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-cream) 100%);
+  color: var(--primary-green) !important;
+  transform: translateX(5px);
+}
+
+.dropdown-item-modern .bi {
+  color: var(--primary-green);
+  width: 20px;
+}
+
+.dropdown-item-logout {
+  color: var(--error-color) !important;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+}
+
+.dropdown-item-logout:hover {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  color: #d32f2f !important;
+  transform: translateX(5px);
+}
+
+.dropdown-item-logout .bi {
+  color: var(--error-color);
+  width: 20px;
+}
+
+/* ========================================
+   EFECTOS VISUALES PARA ENLACE "VER CARRITO"
+   Animaciones y transiciones premium
+   ======================================== */
+
+/* Efectos para el enlace "Ver Carrito" en el dropdown */
+.dropdown-item-modern.link-clicked {
+  transform: scale(0.98) !important;
+  transition: transform 0.1s ease !important;
+}
+
+.dropdown-item-modern .bi-eye.icon-pulse {
+  animation: iconPulseEffect 0.6s ease-out;
+}
+
+@keyframes iconPulseEffect {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.2) rotate(5deg); }
+  50% { transform: scale(1.1) rotate(-3deg); }
+  75% { transform: scale(1.15) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Efecto hover mejorado para el enlace Ver Carrito */
+.dropdown-item-modern[href="/cart"]:hover {
+  background: linear-gradient(135deg, #e8f5e8 0%, var(--light-green) 100%) !important;
+}
+
+.dropdown-item-modern[href="/cart"]:hover .bi-eye {
+  color: var(--secondary-green) !important;
+  transform: scale(1.1);
+}
+
+/* Efecto de brillo en el ícono del ojo */
+.dropdown-item-modern[href="/cart"] .bi-eye {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+.dropdown-item-modern[href="/cart"] .bi-eye::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(46, 125, 50, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dropdown-item-modern[href="/cart"]:hover .bi-eye::before {
+  opacity: 1;
+  animation: iconShimmer 1s ease-in-out;
+}
+
+@keyframes iconShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ============================================
+   MODAL DE CARRITO - ESTILO NATURAL
+   Diseño simple y elegante con paleta verde/crema
+   ============================================ */
+
+/* Modal base */
+#cartModal {
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#cartModal .modal-cart-modern {
+  max-width: 750px !important;
+  width: 750px !important;
+  margin: 1.5rem auto;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#cartModal .modal-content {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Header del modal */
+#cartModal .cart-header-modern {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 1.5rem 2rem;
+}
+
+.cart-header-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cart-icon-header {
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+.cart-title-info .cart-title {
+  font-weight: 600;
+  font-size: 1.3rem;
+  display: block;
+}
+
+.cart-title-info .cart-subtitle {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  display: block;
+}
+
+#cartModal .btn-close-modern {
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+#cartModal .btn-close-modern:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Body del modal */
+#cartModal .cart-body-modern {
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Scroll suave */
+#cartModal .cart-body-modern::-webkit-scrollbar {
+  width: 6px;
+}
+
+#cartModal .cart-body-modern::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+#cartModal .cart-body-modern::-webkit-scrollbar-thumb {
+  background: #28a745;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+#cartModal .cart-body-modern::-webkit-scrollbar-thumb:hover {
+  background: #218838;
+}
+
+/* Loading state */
+.cart-loading-state {
+  color: #6c757d;
+}
+
+.loading-animation .spinner-border {
+  color: #28a745 !important;
+}
+
+.loading-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Items del carrito */
+.cart-item {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.cart-item:hover {
+  border-color: #28a745;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.1);
+}
+
+.cart-item-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid #dee2e6;
+}
+
+.cart-item-details h6 {
+  color: #343a40;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.cart-item-price {
+  color: #28a745;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Botón vaciar carrito */
+.btn-empty-cart {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.btn-empty-cart:hover {
+  background: #c82333;
+  color: white;
+}
+
+/* Footer del modal */
+#cartModal .cart-footer-modern {
+  background: #f8f9fa;
+  border: none;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.cart-total-section {
+  margin-bottom: 1rem;
+}
+
+.total-label {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.total-amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #28a745;
+}
+
+/* Botón ver carrito */
+.btn-view-cart {
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-view-cart:hover {
+  background: #218838;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btn-view-cart:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   FIN DE MODAL DE CARRITO - ESTILO NATURAL
+   ============================================ */
+
+/* ============================================
+   REGLAS ESPECÍFICAS PARA MODAL DEL CARRITO
+   Alta especificidad para evitar conflictos
+   ============================================ */
+
+/* Modal específico del carrito con máxima especificidad */
+#cartModal .modal-dialog.modal-dialog-right.modal-cart-modern {
+  width: 600px !important;
+  max-width: 600px !important;
+  margin-right: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  height: 100vh !important;
+}
+
+/* Responsivo para tablets */
+@media (max-width: 768px) {
+  #cartModal .modal-dialog.modal-dialog-right.modal-cart-modern {
+    width: 90vw !important;
+    max-width: 90vw !important;
+  }
+}
+
+/* Responsivo para móviles */
+@media (max-width: 576px) {
+  #cartModal .modal-dialog.modal-dialog-right.modal-cart-modern {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    height: 100vh !important;
+  }
+}
+
+/* Animación para que la navbar se deslice desde arriba */
+@keyframes navbarSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Aplicar la animación a la navbar */
+.navbar {
+  animation: navbarSlideDown 0.6s ease-out;
+}
+
+/* ========================================
+   MINI-CARRITO MODAL - SOLUCIÓN SIN HEIGHT 100%
+   ======================================== */
+
+/* Modal específico para el carrito - Sin height 100% */
+#mini-cart-modal .modal-dialog {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin: 0 !important;
+  max-width: 450px !important;
+  width: 450px !important;
+  animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex !important;
+  flex-direction: column !important;
+  transform: none !important;
+}
+
+#mini-cart-modal .modal-content {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: -8px 0 25px rgba(46, 125, 50, 0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+/* Eliminar cualquier padding del modal principal */
+#mini-cart-modal {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#mini-cart-modal.modal {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#mini-cart-modal.modal.show {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Eliminar completamente el padding del modal cuando está activo */
+body.modal-open #mini-cart-modal {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Forzar que el modal-dialog ocupe toda la altura sin espacios */
+#mini-cart-modal .modal-dialog {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: 450px !important;
+  width: 450px !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  transform: none !important;
+  animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Forzar que el modal-content ocupe exactamente todo el espacio */
+#mini-cart-modal .modal-content {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%) !important;
+  border: none !important;
+  box-shadow: -8px 0 25px rgba(46, 125, 50, 0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+/* Asegurar que el modal ocupe exactamente la ventana completa */
+#mini-cart-modal.modal.show .modal-dialog {
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateX(0) !important;
+}
+
+/* Header fijo sin espaciado */
+#mini-cart-modal .modal-header {
+  flex-shrink: 0 !important;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%) !important;
+  color: white !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  padding: 1.5rem 2rem !important;
+  margin: 0 !important;
+}
+
+/* Body que ocupa el espacio restante */
+#mini-cart-modal .modal-body {
+  flex: 1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+}
+
+/* Footer fijo sin espaciado */
+#mini-cart-modal .modal-footer {
+  background: linear-gradient(135deg, var(--secondary-cream) 0%, var(--primary-cream) 100%) !important;
+  border-top: 2px solid var(--light-green) !important;
+  border-radius: 0 !important;
+  padding: 1.5rem 2rem !important;
+  flex-shrink: 0 !important;
+  margin-top: 0 !important;
+  position: relative !important;
+  min-height: 140px !important;
+  max-height: 140px !important;
+}
+
+/* Footer del modal */
+.cart-footer-modern {
+  background: linear-gradient(135deg, var(--secondary-cream) 0%, var(--primary-cream) 100%) !important;
+  border-top: 2px solid var(--light-green) !important;
+  border-radius: 0 !important;
+  padding: 1.5rem 2rem !important;
+  flex-shrink: 0 !important;
+  margin-top: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+  position: relative !important;
+  z-index: 1000 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Asegurar que cualquier modal de carrito tenga footer */
+#mini-cart-modal .modal-footer,
+#cartModal .modal-footer {
+  display: flex !important;
+  flex-direction: column !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+/* Resumen de totales en el footer */
+.cart-summary-mini {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--primary-cream) 100%) !important;
+  padding: 1rem !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--border-gray) !important;
+  width: 100% !important;
+}
+
+.cart-summary-mini .summary-line {
+  margin-bottom: 0.5rem !important;
+  font-size: 0.9rem !important;
+}
+
+.cart-summary-mini .summary-line:last-child {
+  margin-bottom: 0 !important;
+}
+
+.cart-summary-mini .summary-label {
+  color: var(--text-gray) !important;
+  font-weight: 500 !important;
+}
+
+.cart-summary-mini .summary-value {
+  color: var(--dark-green) !important;
+  font-weight: 600 !important;
+}
+
+.cart-summary-mini .shipping-free {
+  color: var(--success-color) !important;
+  font-weight: 600 !important;
+}
+
+.cart-summary-mini .tax-included {
+  color: var(--primary-green) !important;
+  font-weight: 600 !important;
+}
+
+.cart-summary-mini .total-label {
+  color: var(--dark-green) !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+}
+
+.cart-summary-mini .total-value {
+  color: var(--primary-green) !important;
+  font-weight: 800 !important;
+  font-size: 1.1rem !important;
+}
+
+/* Botones de acción del mini-carrito */
+.mini-cart-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  width: 100% !important;
+}
+
+.mini-cart-actions .btn {
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mini-cart-actions .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.mini-cart-actions .btn:hover::before {
+  left: 100%;
+}
+
+/* Botón Ver Carrito Completo */
+.btn-view-cart {
+  background: linear-gradient(135deg, var(--secondary-cream) 0%, var(--primary-cream) 100%) !important;
+  border: 2px solid var(--primary-green) !important;
+  color: var(--primary-green) !important;
+}
+
+.btn-view-cart:hover {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-cream) 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2) !important;
+  color: var(--primary-green) !important;
+  border-color: var(--primary-green) !important;
+}
+
+/* Botón Proceder al Checkout */
+.btn-checkout {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%) !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3) !important;
+}
+
+.btn-checkout:hover {
+  background: linear-gradient(135deg, var(--hover-green) 0%, var(--primary-green) 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4) !important;
+  color: white !important;
+}
+
+.btn-checkout:active {
+  transform: translateY(0) !important;
+}
+
+/* Estados del carrito */
+.mini-cart-actions .btn:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Ajustes para evitar que los botones se recorten en el mini-carrito */
+.mini-cart-item {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-gray);
+  /* Altura mínima aumentada para evitar recortes */
+  min-height: 150px;
+  position: relative;
+}
+
+/* Estructura de dos partes: contenido del item y controles */
+.mini-cart-item-content {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.mini-cart-item-image {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-gray);
+  overflow: hidden;
+}
+
+.mini-cart-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mini-cart-item-info {
+  flex: 1;
+}
+
+.mini-cart-item-name {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--dark-green);
+}
+
+.mini-cart-item-price {
+  font-weight: 700;
+  color: var(--primary-green);
+}
+
+/* Controles siempre al final del item */
+.mini-cart-item-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 10px;
+  height: 40px; /* Altura fija para los controles */
+}
+
+/* Control de cantidad específico para mini-carrito */
+.mini-cart-quantity-control {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%);
+  border-radius: 6px;
+  padding: 2px;
+  border: 1px solid var(--border-gray);
+}
+
+.mini-cart-quantity-control button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.mini-cart-item-quantity {
+  min-width: 30px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--dark-green);
+}
+
+/* Contenedor de productos con scroll */
+.mini-cart-products {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Asegurar espacio adicional al final de la lista para mejor visualización */
+.mini-cart-products::after {
+  content: '';
+  display: block;
+  height: 15px;
+}
+
+/* Eliminar botón */
+.mini-cart-item-remove {
+  color: var(--error-color);
+  background: transparent;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.mini-cart-item-remove:hover {
+  background: rgba(244, 67, 54, 0.1);
+}
+
+/* Estilos para el mini carrito */
+.mini-cart-scrollable {
+  max-height: 60vh; /* Altura máxima del 60% de la altura de la ventana */
+  overflow-y: auto; /* Habilitar scroll vertical */
+  padding-right: 5px; /* Espacio para la barra de scroll */
+}
+
+/* Estilos para la barra de scroll en navegadores webkit */
+.mini-cart-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mini-cart-scrollable::-webkit-scrollbar-track {
+  background: rgba(46, 125, 50, 0.1);
+  border-radius: 10px;
+}
+
+.mini-cart-scrollable::-webkit-scrollbar-thumb {
+  background: var(--primary-green, #2E7D32);
+  border-radius: 10px;
+}
+
+.mini-cart-scrollable::-webkit-scrollbar-thumb:hover {
+  background: var(--hover-green, #1B5E20);
+}
+
+/* Ajuste para dispositivos móviles o pantallas más pequeñas */
+@media (max-height: 700px) {
+  .mini-cart-scrollable {
+    max-height: 50vh;
+  }
+}
+
+@media (max-height: 500px) {
+  .mini-cart-scrollable {
+    max-height: 40vh;
+  }
+}
+
+/* Mejoras para elementos del mini carrito */
+.mini-cart-img-container {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-gray, #DEE2E6);
+}
+
+.mini-cart-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mini-cart-product-row {
+  flex: 1;
+  min-width: 0; /* Importante para que el texto se corte correctamente */
+}
+
+.mini-cart-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ========================================
+   NAVBAR ADMIN MODERNIZADO - PALETA VERDE + CREMA
+   Estilos específicos para administradores
+   ======================================== */
+
+/* Navbar admin moderna */
+.navbar-admin-modern {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, var(--accent-cream) 100%) !important;
+  border-bottom: 3px solid var(--secondary-green);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.08);
+  padding: 12px 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.navbar-admin-modern:hover {
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.12);
+  border-bottom-color: var(--primary-green);
+}
+
+/* Brand específico para admin */
+.navbar-admin-modern .brand-enhanced .bi-gear-wide-connected {
+  font-size: 1.8rem;
+  color: var(--secondary-green);
+  animation: adminGearRotate 8s linear infinite;
+}
+
+@keyframes adminGearRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.navbar-admin-modern .brand-text {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Dropdown de usuario admin */
+.admin-user-dropdown {
+  color: var(--dark-green) !important;
+  padding: 8px 16px !important;
+  border-radius: 15px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-cream) 100%);
+  border: 2px solid var(--secondary-green);
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.1);
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-user-dropdown::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.admin-user-dropdown:hover {
+  color: var(--secondary-green) !important;
+  background: linear-gradient(135deg, var(--accent-cream) 0%, var(--secondary-cream) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.2);
+}
+
+.admin-user-dropdown:hover::before {
+  left: 100%;
+}
+
+.admin-user-dropdown.dropdown-opening {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: white !important;
+}
+
+/* Avatar de admin */
+.admin-avatar {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
+}
+
+.admin-avatar .bi-person-gear {
+  font-size: 1.5rem;
+}
+
+/* Información del admin */
+.admin-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.admin-username {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: inherit;
+}
+
+.admin-username.admin-info-confirmed {
+  animation: adminConfirmPulse 0.5s ease-out;
+}
+
+@keyframes adminConfirmPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); color: var(--secondary-green); }
+  100% { transform: scale(1); }
+}
+
+.admin-role {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 500;
+  color: inherit;
+}
+
+/* Menú dropdown de admin */
+.admin-user-dropdown-menu {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, white 100%);
+  border: 2px solid var(--secondary-green);
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(46, 125, 50, 0.15);
+  padding: 0;
+  margin-top: 10px;
+  min-width: 300px;
+  overflow: hidden;
+}
+
+.admin-user-dropdown-menu .dropdown-header {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: white;
+  padding: 15px 20px;
+  margin: 0;
+  border: none;
+}
+
+.dropdown-admin-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-avatar-large {
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-admin-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+}
+
+.dropdown-admin-role {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+}
+
+/* Dropdown de estadísticas */
+.admin-dropdown-menu {
+  background: linear-gradient(135deg, var(--primary-cream) 0%, white 100%);
+  border: 2px solid var(--primary-green);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(46, 125, 50, 0.12);
+  padding: 8px 0;
+  margin-top: 8px;
+  min-width: 220px;
+  overflow: hidden;
+}
+
+/* Efecto para dropdown de estadísticas */
+.nav-link-enhanced.stats-dropdown-opening {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  color: white !important;
+}
+
+/* Indicador de cierre de sesión para admin */
+.admin-logout-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.95) 0%, rgba(76, 175, 80, 0.95) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.admin-logout-indicator.admin-logout-show {
+  opacity: 1;
+}
+
+.admin-logout-content {
+  text-align: center;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.admin-logout-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.admin-logout-subtitle {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* Responsive para navbar admin */
+@media (max-width: 991px) {
+  .navbar-admin-modern {
+    padding: 8px 0;
+  }
+  
+  .admin-user-dropdown {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .admin-info {
+    align-items: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-user-dropdown-menu {
+    min-width: 280px;
+  }
+  
+  .dropdown-admin-info {
+    gap: 8px;
+  }
+  
+  .admin-avatar-large {
+    font-size: 2rem;
+  }
+}
+
+/* Animación de entrada para navbar admin */
+.navbar-admin-modern {
+  animation: adminNavbarSlideDown 0.6s ease-out;
+}
+
+@keyframes adminNavbarSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   FIN NAVBAR ADMIN MODERNIZADO
+   ======================================== */
+
