@@ -851,8 +851,26 @@ $(function() {
     const productId = $(this).data('id');
     const productName = $(this).data('name');
     
-    // Mostrar confirmación antes de eliminar
-    if (confirm(`¿Está seguro que desea eliminar el producto "${productName || 'seleccionado'}"? Esta acción marcará el producto como inactivo.`)) {
+    // Configurar el modal con los datos del producto
+    $('#product-name-to-delete').text(`"${productName || 'seleccionado'}"`);
+    
+    // Guardar el ID del producto para usar en la confirmación
+    $('#confirm-delete-product').data('product-id', productId);
+    
+    // Mostrar el modal
+    const deleteModal = new bootstrap.Modal(document.getElementById('delete-product-modal'));
+    deleteModal.show();
+  });
+
+  // Event listener para confirmar la eliminación desde el modal
+  $(document).on('click', '#confirm-delete-product', function() {
+    const productId = $(this).data('product-id');
+    
+    if (productId) {
+      // Cerrar el modal
+      bootstrap.Modal.getInstance(document.getElementById('delete-product-modal')).hide();
+      
+      // Proceder con la eliminación
       deleteProduct(productId);
     }
   });
@@ -863,7 +881,7 @@ $(function() {
     showLoading('Eliminando producto...');
     
     $.ajax({
-      url: `${window.API_BASE_URL}/productos/admin/${productId}`,
+      url: `${window.API_BASE_URL}/productos/${productId}`,
       type: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`,
