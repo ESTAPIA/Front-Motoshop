@@ -121,7 +121,7 @@ Este proyecto está bajo la Licencia MIT.
 
 ## 👨‍💻 Desarrollador
 
-Desarrollado por **ESTAPIA**
+Desarrollado por **Anthony Sosa** y **ESTAPIA** 
 
 ---
 
